@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <class="parent"></class>
+    <class="parent">
       <section class="mensura">
         <form class="formulario" id="formularioMensura">
           <div class="elemento">
@@ -41,37 +41,76 @@
           </div>
 
           <div class="elemento">
+            <label for="cementerio">Cementerio</label>
+            <input type="number" id="cementerio" min="0" required />
+          </div>
+
+          <div class="elemento">
             <label for="preferencial">Preferencial</label>
             <input type="checkbox" id="preferencialMensura" />
           </div>
-      </section>
 
-      <section class="botonesMensura">
-        <button class="calcular-btn btn" id="calcular-btnMensura" type="button">
+
+        </form>
+      </section>
+    
+
+      <section class="botones">
+        <button class="calcular-btn btn" id="calcular-btn" type="button">
           Calcular
         </button>
 
-        <button class="borrar-btn-btn" id="borrar-btnMensura" type="button">
+        <button class="borrar-btn btn" id="borrar-btn" type="button">
           Borrar
         </button>
-
-        <button class="volver-btn-btn" id="volver-btnMensura" type="button">
+     
+        <button class="volver-btn btn" id="volver-btn" type="button">
           Volver
         </button>
-      </form>
       </section>
+      
+          <div class="conteinerResultados" id="tablaMensura">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Datos Ingresados</th>
+                  <th>Cantidad</th>
+                  <th>Valor</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody class="resultados" id="resultadosMensura"></tbody>
+            </table>
+          </div>
 
-     <div class="ventana-emergente" id="miVentana">
-      <div class="contenido-ventana">
-        <div class="conteinerResultados" id="tablaMensura">
-          <table class="tabla">
+          <section class="valuaciones">
+            <form class="formulario" id="formularioValuaciones">
+              <div class="elemento">
+                <label for="declaracionesJuradas">Declraciones juradas</label>
+                <input type="number" id="declaraconesJuradas" min="0" required>
+              </div>
 
-          </table>
-        </div>
-      </div>
+              <div class="elemento">
+                  <label for="valoresFiscales">Valores fiscales</label>
+                  <input type="number" id="valoresFiscales" min="0" required>
+              </div>
 
-     </div>
-    
-    
+              <div class="elemento">
+                <label for="pedidoValoresFiscales">Reconsideración valores fiscales</label>
+                <input type="number" id="pedidoValoresFiscales" min="0" required>
+              </div>
+
+              <div class="elemento">
+                <label for="reconsideracionVir">Reconsideracion vir</label>
+                <input type="number" id="vir" min="0" required> 
+              </div>
+
+              <div class="elemento">
+                <label for="preferencialValuaciones">Preferencial</label>
+                <input type="checkbox" id="preferencialValuaciones"/>
+              </div>
+            </form>
+          </section>
   </body>
+  <script src="./formularios/mensura.js" type="module"></script>
 </html>

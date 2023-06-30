@@ -1,13 +1,13 @@
 /**
  * CONSTANTES GENERALES
  */
-export const multiplicador = 2.5; //Indice para calcular los montos
-export const porc_preferencial = 500; //Porcentaje preferencial
+const multiplicador = 2.5; //Indice para calcular los montos
+const porcentajePreferencial = 500; //Porcentaje preferencial
 
 /**
  * CONSTANTES MENSURA
  */
-const modulos = [
+export const modulos = [
   { rango: [0, 5], valor: 750 },
   { rango: [6, 20], valor: 625 },
   { rango: [21, 50], valor: 550 },
@@ -17,15 +17,15 @@ const modulos = [
 /**
  * CONSTANTES VALORES MODULARES
  */
-const valor_modulo_ddjj = 200 * multiplicador;
-const valor_modulo_ufuncional = 500 * multiplicador;
-const valor_modulo_cementerio = 100 * multiplicador;
-const valor_modulo_parcelario = 1500 * multiplicador;
-const valor_modulo_estudio = 700 * multiplicador;
-const valor_modulo_vir = 700 * multiplicador;
-const valor_modulo_valor_fiscal = 600 * multiplicador;
-const valor_modulo_valuacion_fiscal = 500 * multiplicador;
-const valor_modulo_ganadera = 500 * multiplicador;
+const precioDdjj = 200 * multiplicador;
+const precioUnidadFuncional = 500 * multiplicador;
+const precioCementerio = 100 * multiplicador;
+const precioParcelario = 1500 * multiplicador;
+const precioEstudio = 700 * multiplicador;
+const precioVir = 700 * multiplicador;
+const precioValorFiscal = 600 * multiplicador;
+const precioValuacioFiscal = 500 * multiplicador;
+const precioGanadera = 500 * multiplicador;
 
 /**
  * CONSTANTES FORMULARIO MENSURA
@@ -40,3 +40,18 @@ const tablaMensura = document.getElementById("tablaMensura");
 const formularioValuaciones = document.getElementById("formularioValuaciones");
 const resultadosValuaciones = document.getElementById("resultadosValuaciones");
 const tablaValuaciones = document.getElementById("tablaValuaciones");
+
+export const valoresMensura = {
+  precioDdjj,
+  precioUnidadFuncional,
+  precioCementerio,
+  precioParcelario,
+  precioEstudio,
+};
+
+export const valoresValuaciones = {
+  precioVir,
+  precioValorFiscal,
+  precioValuacioFiscal,
+  precioGanadera,
+};
