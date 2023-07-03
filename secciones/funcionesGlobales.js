@@ -1,3 +1,5 @@
+const resultadosMensura = document.getElementById("resultadosMensura");
+
 /**
  * CAMBIA EL VALOR DE UNA CADENA CON EL FORMATO PESO ARGENTINO.
  * @param {Number} monto -El monto a cambiar de formato
@@ -6,7 +8,8 @@
 export function formatoPesoArgentino(monto) {
   return new Intl.NumberFormat("es-AR", {
     style: "currency",
-    currency: "$",
+    currency: "ARS",
+    currencyDisplay: "symbol",
   }).format(monto);
 }
 
@@ -26,7 +29,7 @@ export function verTotal(total, abonar) {
  * @param {number} cantidad  - La cantidad que se ingreso en el formulario.
  * @param {number} valorModular - El valor modular de cada elemento que hay en la fila.
  */
-export function agregarFila(etiqueta, cantidad, valorModular, tabla) {
+export function agregarFila(etiqueta, cantidad, valorModular = 0, tabla) {
   const fila = document.createElement("tr");
   fila.innerHTML = `
         <th class = "texto-izquierda">${etiqueta}</th> 
@@ -48,10 +51,10 @@ export function agregarFilaPreferencial(preferencial, monto, tabla) {
   tabla.appendChild(fila);
 }
 
-export function mostrarTotalMensura(valoresMensura) {
+export function mostrarTotalMensura(valoresMensura, modulos) {
   const datosEntrada = recibirDatosEntrada();
   const total = calcularTotal(datosEntrada, valoresMensura);
-  creaTablaResultados(datosEntrada);
+  creaTablaResultados(datosEntrada, modulos, valoresMensura);
   verTotal(total, "abonarMensura");
 }
 
@@ -112,7 +115,7 @@ function calcularTotal(
   // Si hay parcelas agregar el valor modular de las parcelas multiplicado por la cantidad de parcelas
   if (parcelas != 0) total += parcelasValorModular(parcelas) * parcelas;
   // Si es preferencial agregar el porcentaje preferencial al total
-  if (preferencial) total *= 1 + 500 / 100;
+  if (preferencial) total *= 1 + porcentajePreferencial / 100;
   return Math.round(total * 100) / 100;
 }
 
@@ -120,7 +123,7 @@ function calcularTotal(
  * CREA UNA TABLA CON LOS RESULTADOS DE CADA ELEMENTO CON SUS CANTIDADES Y VALORES MODULADRES Y LA AGREGA A LA SECCION RESULTADOS.
  * @param {object} datosEntrada - Un objeto con los valoresd entrada que ingreso el usuario.
  */
-function creaTablaResultados(datosEntrada) {
+function creaTablaResultados(datosEntrada, modulos, valoresMensura) {
   const {
     origen,
     resultante,
@@ -131,7 +134,7 @@ function creaTablaResultados(datosEntrada) {
     preferencial,
     parcelas,
   } = datosEntrada;
-  const valor_modulo_parcelas = parcelasValorModular(parcelas);
+  const valor_modulo_parcelas = parcelasValorModular(parcelas, modulos);
 
   agregarFila(
     "Parcelas origen",
@@ -146,31 +149,26 @@ function creaTablaResultados(datosEntrada) {
     valor_modulo_parcelas,
     resultadosMensura
   );
+  agregarFila("Unidades funcionales", valoresMensura[1], resultadosMensura);
 
-  agregarFila(
-    "Unidades funcionales",
-    valor_modulo_ufuncional,
-    resultadosMensura
-  );
-
-  agregarFila("Cementerio", valor_modulo_cementerio, resultadosMensura);
+  agregarFila("Cementerio", valoresMensura[2], resultadosMensura);
 
   agregarFila(
     "Estudio de titulo y antecedente dominal",
-    valor_modulo_estudio,
+    valoresMensura[4],
     resultadosMensura
   );
 
   agregarFila(
     "Verificación estado parcelario",
-    valor_modulo_parcelario,
+    valorModular[3],
     resultadosMensura
   );
 
   agregarFila(
     "Declaraciones juradas",
     ddjj,
-    valor_modulo_ddjj,
+    valoresMensura[0],
     resultadosMensura
   );
 
@@ -186,4 +184,17 @@ function creaTablaResultados(datosEntrada) {
     : 0;
 
   agregarFilaPreferencial(preferencial, precioPreferencial, resultadosMensura);
+}
+
+/**
+ * DEVUELVE EL VALOR MODULAR QUE CORRESPONDE A LA CANTIDAD DE PARCELAS INGRESADAS.
+ * @param {Number} parcelas - La cantidad de parcelas que se ingresan.
+ * @returns {Number} - El valor modular que se corresponde a la cantidad de parcelas ingresdas.
+ */
+function parcelasValorModular(parcelas, modulos) {
+  const moduloUbicado = modulos.find((modulo) => {
+    const [min, max] = modulo.rango;
+    return parcelas >= min && parcelas <= max;
+  });
+  return moduloUbicado ? moduloUbicado.valor : 0;
 }

@@ -4,21 +4,12 @@ import {
   agregarFila,
   mostrarTotalMensura,
 } from "../secciones/funcionesGlobales.js";
-import { calcularMensura } from "../secciones/botones.js";
-import { valoresMensura, valoresValuaciones } from "../secciones/constantes.js";
-
-/**
- * DEVUELVE EL VALOR MODULAR QUE CORRESPONDE A LA CANTIDAD DE PARCELAS INGRESADAS.
- * @param {Number} parcelas - La cantidad de parcelas que se ingresan.
- * @returns {Number} - El valor modular que se corresponde a la cantidad de parcelas ingresdas.
- */
-function parcelasValorModular(parcelas) {
-  const moduloUbicado = modulos.find((modulo) => {
-    const [min, max] = modulo.rango;
-    return parcelas >= min && parcelas <= max;
-  });
-  return moduloUbicado ? moduloUbicado.valor * multiplicador : 0;
-}
+import { calcularMensura, volverMensura } from "../secciones/botones.js";
+import {
+  valoresMensura,
+  valoresValuaciones,
+  modulos,
+} from "../secciones/constantes.js";
 
 function totalPreferencial(
   parcelas,
@@ -44,5 +35,8 @@ function totalPreferencial(
 const calcularBtnMensura = document.getElementById("calcular-btn");
 calcularBtnMensura.addEventListener("click", () => {
   calcularMensura();
-  mostrarTotalMensura(valoresMensura);
+  mostrarTotalMensura(valoresMensura, modulos);
 });
+
+const volverBtnMensura = document.getElementById("volver-btn");
+volverBtnMensura.addEventListener("click", volverMensura());

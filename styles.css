@@ -3,6 +3,7 @@ html {
   overflow: hidden;
   overflow-y: scroll;
   justify-content: center;
+  position: absolute;
 }
 
 .mensura {
@@ -12,29 +13,78 @@ html {
 .formulario {
   display: flex;
   flex-direction: column;
+  padding: 15px;
+  border-radius: 15px;
 }
 
 .elemento label {
-  display: flex;
-  width: 200px;
+  position: relative;
+  width: 300px;
   justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .elemento input[type="number"] {
   margin-bottom: 10px;
   border-radius: 3px;
-  border: 1px solid grey;
-  outline: none;
-  font-size: 13px;
+  font-size: 15px;
   justify-content: center;
   display: flex;
-  width: 200px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #95a6a7;
+  outline: none;
 }
 
 input[type="checkbox"] {
-  width: 180px;
+  width: 80px;
   display: flex;
   justify-content: center;
+}
+
+fieldset {
+  border: 3px solid #95a6a7;
+  border-radius: 15px;
+  width: 90%;
+  padding: 1%;
+}
+
+legend {
+  border: 1px solid #95a6a7;
+  text-align: center;
+  background-color: #95a6a7;
+  border-radius: 8px;
+  color: white;
+}
+
+.name-input {
+  width: 50px;
+  padding: 0;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  background: transparent;
+  color: black;
+  font-size: 2px;
+}
+
+.name-label {
+  position: absolute;
+  left: 0;
+  padding: 0;
+  color: black;
+  font-size: 15px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.name-input:valid ~ .name-label,
+.name-input:focus ~ .name-label {
+  transition: all 0.5s ease-in;
+  color: #95a6a7;
+  outline: none;
+  color: #95a6a7;
 }
 
 .btn {

@@ -8,10 +8,10 @@ const porcentajePreferencial = 500; //Porcentaje preferencial
  * CONSTANTES MENSURA
  */
 export const modulos = [
-  { rango: [0, 5], valor: 750 },
-  { rango: [6, 20], valor: 625 },
-  { rango: [21, 50], valor: 550 },
-  { rango: [51, Infinity], valor: 500 },
+  { rango: [0, 5], valor: 750 * multiplicador },
+  { rango: [6, 20], valor: 625 * multiplicador },
+  { rango: [21, 50], valor: 550 * multiplicador },
+  { rango: [51, Infinity], valor: 500 * multiplicador },
 ];
 
 /**
@@ -41,17 +41,19 @@ const formularioValuaciones = document.getElementById("formularioValuaciones");
 const resultadosValuaciones = document.getElementById("resultadosValuaciones");
 const tablaValuaciones = document.getElementById("tablaValuaciones");
 
-export const valoresMensura = {
+export const valoresMensura = [
   precioDdjj,
   precioUnidadFuncional,
   precioCementerio,
   precioParcelario,
   precioEstudio,
-};
+  porcentajePreferencial,
+];
 
-export const valoresValuaciones = {
+export const valoresValuaciones = [
   precioVir,
   precioValorFiscal,
   precioValuacioFiscal,
   precioGanadera,
-};
+  porcentajePreferencial,
+];
