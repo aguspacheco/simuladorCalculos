@@ -20,7 +20,7 @@ export function formatoPesoArgentino(monto) {
  */
 export function verTotal(total, abonar) {
   const contenedor = document.getElementById(abonar);
-  contenedor.innerHTML = formatoPesoArgentino(total);
+  contenedor.textContent = formatoPesoArgentino(total);
 }
 
 /**
@@ -40,12 +40,12 @@ export function agregarFila(etiqueta, cantidad, valorModular = 0, tabla) {
   tabla.appendChild(fila);
 }
 
-export function agregarFilaPreferencial(preferencial, monto, tabla) {
+export function agregarFilaPreferencial(etiqueta, preferencial, monto, tabla) {
   const fila = document.createElement("tr");
   fila.innerHTML = `
     <th class = "texto-izquierda">${etiqueta}</th>
-    <td>${cantidad}</td>
     <td>${preferencial ? "Si" : "No"}</td> 
+    <td>${preferencial ? 500 : 0}%</td>
     <td>${formatoPesoArgentino(monto)}</td>
     `;
   tabla.appendChild(fila);
@@ -53,7 +53,7 @@ export function agregarFilaPreferencial(preferencial, monto, tabla) {
 
 export function mostrarTotalMensura(valoresMensura, modulos) {
   const datosEntrada = recibirDatosEntrada();
-  const total = calcularTotal(datosEntrada, valoresMensura);
+  const total = calcularTotal(datosEntrada, valoresMensura, modulos);
   creaTablaResultados(datosEntrada, modulos, valoresMensura);
   verTotal(total, "abonarMensura");
 }
@@ -101,7 +101,8 @@ function calcularTotal(
     estudio,
     estadoParcelario,
   },
-  valoresMensura
+  valoresMensura,
+  modulos
 ) {
   // Calcular el total inicial sumando los valores de los módulos multiplicados por la cantidad.
   let total =
@@ -113,10 +114,36 @@ function calcularTotal(
   total +=
     cementerio * valoresMensura[3] * parcelas * funcional * valoresMensura[1];
   // Si hay parcelas agregar el valor modular de las parcelas multiplicado por la cantidad de parcelas
-  if (parcelas != 0) total += parcelasValorModular(parcelas) * parcelas;
+  if (parcelas != 0)
+    total += parcelasValorModular(parcelas, modulos) * parcelas;
   // Si es preferencial agregar el porcentaje preferencial al total
-  if (preferencial) total *= 1 + porcentajePreferencial / 100;
+  if (preferencial) total *= 1 + 500 / 100;
+
   return Math.round(total * 100) / 100;
+}
+
+function totalPreferencial(
+  parcelas,
+  ddjj,
+  funcional,
+  cementerio,
+  estudio,
+  estadoParcelario,
+  valoresMensura,
+  modulos
+) {
+  // Calcular el total inicial sumando los valores de los módulos multiplicados por la cantidad.
+  let total =
+    ddjj * valoresMensura[0] +
+    funcional * valoresMensura[1] +
+    cementerio * valoresMensura[2] +
+    estadoParcelario * valoresMensura[3] +
+    estudio * valoresMensura[4];
+  // Si hay parcelas, agregar el valor modular de las parcelas multiplicado por la cantidad de parcelas.
+  if (parcelas != 0)
+    total += parcelasValorModular(parcelas, modulos) * parcelas;
+  // Calcular el total preferencial multiplicando el total por el porcentaje preferencial.
+  return (total * 500) / 100;
 }
 
 /**
@@ -131,6 +158,7 @@ function creaTablaResultados(datosEntrada, modulos, valoresMensura) {
     funcional,
     cementerio,
     estadoParcelario,
+    estudio,
     preferencial,
     parcelas,
   } = datosEntrada;
@@ -149,19 +177,27 @@ function creaTablaResultados(datosEntrada, modulos, valoresMensura) {
     valor_modulo_parcelas,
     resultadosMensura
   );
-  agregarFila("Unidades funcionales", valoresMensura[1], resultadosMensura);
 
-  agregarFila("Cementerio", valoresMensura[2], resultadosMensura);
+  agregarFila(
+    "Unidades funcionales",
+    funcional,
+    valoresMensura[1],
+    resultadosMensura
+  );
+
+  agregarFila("Cementerio", cementerio, valoresMensura[2], resultadosMensura);
 
   agregarFila(
     "Estudio de titulo y antecedente dominal",
+    estudio,
     valoresMensura[4],
     resultadosMensura
   );
 
   agregarFila(
     "Verificación estado parcelario",
-    valorModular[3],
+    estadoParcelario,
+    valoresMensura[3],
     resultadosMensura
   );
 
@@ -179,11 +215,18 @@ function creaTablaResultados(datosEntrada, modulos, valoresMensura) {
         funcional,
         cementerio,
         estadoParcelario,
-        estudio
+        estudio,
+        valoresMensura,
+        modulos
       )
     : 0;
 
-  agregarFilaPreferencial(preferencial, precioPreferencial, resultadosMensura);
+  agregarFilaPreferencial(
+    "preferencial",
+    preferencial,
+    precioPreferencial,
+    resultadosMensura
+  );
 }
 
 /**
