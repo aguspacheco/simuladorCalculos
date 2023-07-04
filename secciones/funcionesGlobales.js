@@ -1,4 +1,8 @@
-const resultadosMensura = document.getElementById("resultadosMensura");
+import {
+  porcentajePreferencial,
+  valoresMensura,
+  modulos,
+} from "./constantes.js";
 
 /**
  * CAMBIA EL VALOR DE UNA CADENA CON EL FORMATO PESO ARGENTINO.
@@ -39,22 +43,20 @@ export function agregarFila(etiqueta, cantidad, valorModular = 0, tabla) {
         `;
   tabla.appendChild(fila);
 }
-
 export function agregarFilaPreferencial(etiqueta, preferencial, monto, tabla) {
   const fila = document.createElement("tr");
   fila.innerHTML = `
     <th class = "texto-izquierda">${etiqueta}</th>
     <td>${preferencial ? "Si" : "No"}</td> 
-    <td>${preferencial ? 500 : 0}%</td>
+    <td>${preferencial ? porcentajePreferencial : 0}%</td>
     <td>${formatoPesoArgentino(monto)}</td>
     `;
   tabla.appendChild(fila);
 }
-
-export function mostrarTotalMensura(valoresMensura, modulos) {
+export function mostrarTotalMensura() {
   const datosEntrada = recibirDatosEntrada();
-  const total = calcularTotal(datosEntrada, valoresMensura, modulos);
-  creaTablaResultados(datosEntrada, modulos, valoresMensura);
+  const total = calcularTotal(datosEntrada);
+  creaTablaResultados(datosEntrada);
   verTotal(total, "abonarMensura");
 }
 
@@ -91,19 +93,15 @@ export function recibirDatosEntrada() {
  * @param {Object} datosEntrada - Es un objeto con los valores ingreso por el usuario.
  * @returns {Number} - El total a pagar segun los valores ingresados por el usuario.
  */
-function calcularTotal(
-  {
-    parcelas,
-    ddjj,
-    preferencial,
-    funcional,
-    cementerio,
-    estudio,
-    estadoParcelario,
-  },
-  valoresMensura,
-  modulos
-) {
+function calcularTotal({
+  parcelas,
+  ddjj,
+  preferencial,
+  funcional,
+  cementerio,
+  estudio,
+  estadoParcelario,
+}) {
   // Calcular el total inicial sumando los valores de los módulos multiplicados por la cantidad.
   let total =
     ddjj * valoresMensura[0] +
@@ -114,14 +112,12 @@ function calcularTotal(
   total +=
     cementerio * valoresMensura[3] * parcelas * funcional * valoresMensura[1];
   // Si hay parcelas agregar el valor modular de las parcelas multiplicado por la cantidad de parcelas
-  if (parcelas != 0)
-    total += parcelasValorModular(parcelas, modulos) * parcelas;
+  if (parcelas != 0) total += parcelasValorModular(parcelas) * parcelas;
   // Si es preferencial agregar el porcentaje preferencial al total
-  if (preferencial) total *= 1 + 500 / 100;
+  if (preferencial) total *= 1 + porcentajePreferencial / 100;
 
   return Math.round(total * 100) / 100;
 }
-
 function totalPreferencial(
   parcelas,
   ddjj,
@@ -140,17 +136,16 @@ function totalPreferencial(
     estadoParcelario * valoresMensura[3] +
     estudio * valoresMensura[4];
   // Si hay parcelas, agregar el valor modular de las parcelas multiplicado por la cantidad de parcelas.
-  if (parcelas != 0)
-    total += parcelasValorModular(parcelas, modulos) * parcelas;
+  if (parcelas != 0) total += parcelasValorModular(parcelas) * parcelas;
   // Calcular el total preferencial multiplicando el total por el porcentaje preferencial.
-  return (total * 500) / 100;
+  return (total * porcentajePreferencial) / 100;
 }
 
 /**
  * CREA UNA TABLA CON LOS RESULTADOS DE CADA ELEMENTO CON SUS CANTIDADES Y VALORES MODULADRES Y LA AGREGA A LA SECCION RESULTADOS.
  * @param {object} datosEntrada - Un objeto con los valoresd entrada que ingreso el usuario.
  */
-function creaTablaResultados(datosEntrada, modulos, valoresMensura) {
+function creaTablaResultados(datosEntrada) {
   const {
     origen,
     resultante,
@@ -162,7 +157,7 @@ function creaTablaResultados(datosEntrada, modulos, valoresMensura) {
     preferencial,
     parcelas,
   } = datosEntrada;
-  const valor_modulo_parcelas = parcelasValorModular(parcelas, modulos);
+  const valor_modulo_parcelas = parcelasValorModular(parcelas);
 
   agregarFila(
     "Parcelas origen",
@@ -234,7 +229,7 @@ function creaTablaResultados(datosEntrada, modulos, valoresMensura) {
  * @param {Number} parcelas - La cantidad de parcelas que se ingresan.
  * @returns {Number} - El valor modular que se corresponde a la cantidad de parcelas ingresdas.
  */
-function parcelasValorModular(parcelas, modulos) {
+function parcelasValorModular(parcelas) {
   const moduloUbicado = modulos.find((modulo) => {
     const [min, max] = modulo.rango;
     return parcelas >= min && parcelas <= max;

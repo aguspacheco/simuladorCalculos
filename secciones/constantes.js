@@ -1,8 +1,8 @@
 /**
  * CONSTANTES GENERALES
  */
-const multiplicador = 2.5; //Indice para calcular los montos
-const porcentajePreferencial = 500; //Porcentaje preferencial
+export const multiplicador = 2.5; //Indice para calcular los montos
+export const porcentajePreferencial = 500; //Porcentaje preferencial
 
 /**
  * CONSTANTES MENSURA
@@ -47,7 +47,6 @@ export const valoresMensura = [
   precioCementerio,
   precioParcelario,
   precioEstudio,
-  porcentajePreferencial,
 ];
 
 export const valoresValuaciones = [
@@ -55,5 +54,4 @@ export const valoresValuaciones = [
   precioValorFiscal,
   precioValuacioFiscal,
   precioGanadera,
-  porcentajePreferencial,
 ];

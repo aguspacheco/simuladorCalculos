@@ -87,7 +87,6 @@ legend {
 
 .btn {
   padding: 1rem 1.5rem;
-  margin-top: 23px;
   margin-left: 5px;
   font-size: 12px;
   font-weight: semibold;
@@ -119,6 +118,7 @@ button :active {
 
 .volver-btn {
   background-color: #f1c40e;
+  
 }
 
 .valuaciones {

@@ -1,24 +1,14 @@
-import {
-  agregarFilaPreferencial,
-  verTotal,
-  agregarFila,
-  mostrarTotalMensura,
-} from "../secciones/funcionesGlobales.js";
+import { mostrarTotalMensura } from "../secciones/funcionesGlobales.js";
 import {
   calcularMensura,
   volverMensura,
   borrarMensura,
 } from "../secciones/botones.js";
-import {
-  valoresMensura,
-  valoresValuaciones,
-  modulos,
-} from "../secciones/constantes.js";
 
 const calcularBtnMensura = document.getElementById("calcular-btn");
 calcularBtnMensura.addEventListener("click", () => {
   calcularMensura();
-  mostrarTotalMensura(valoresMensura, modulos);
+  mostrarTotalMensura();
 });
 
 const volverBtnMensura = document.getElementById("volver-btn");
