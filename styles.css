@@ -56,6 +56,40 @@ legend {
   color: white;
 }
 
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #4742425b;
+}
+
+thead {
+  background-color: #5f564a46;
+  border-bottom: solid;
+  color: #333333;
+}
+
+.tabla th,
+.tabla td {
+  padding: 3px;
+  text-align: center;
+  border-bottom: 2px solid #808080;
+}
+
+tr:nth-ch(even) {
+  background-color: #dddddd;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 8px;
+  background-color: #323b42;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #ccc;
+}
+
 .name-input {
   width: 50px;
   padding: 0;
@@ -118,11 +152,16 @@ button :active {
 
 .volver-btn {
   background-color: #f1c40e;
-  
 }
 
 .valuaciones {
   display: none;
 }
 
+.conteinerResultados {
+  display: none;
+}
 
+.volver-btn {
+  display: none;
+}
