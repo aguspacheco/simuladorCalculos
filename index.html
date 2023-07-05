@@ -55,7 +55,7 @@
         </section>
       </fieldset>
         
-      <section class="botones">
+      <section class="botonesMensura">
         <button class="calcular-btn btn" id="calcular-btn" type="button">
           Calcular
         </button>
@@ -63,19 +63,15 @@
         <button class="borrar-btn btn" id="borrar-btn" type="button">
           Borrar
         </button>
-     
-        <button class="volver-btn btn" id="volver-btn" type="button">
-          Volver
-        </button>
       </section>
-      
+
           <div class="conteinerResultados" id="tablaMensura">
             <table class="tabla">
               <thead>
                 <tr>
                   <th>Datos Ingresados</th>
                   <th>Cantidad</th>
-                  <th>Valor</th>
+                  <th>Valor modular</th>
                   <th>Total</th>
                 </tr>
               </thead>
@@ -86,12 +82,15 @@
                 <div id="abonarMensura"></div>
             </div>
           </div>
+          <button class="volver-btn btn" id="volver-btn" type="button">
+            Volver
+          </button>
 
           <section class="valuaciones">
             <form class="formulario" id="formularioValuaciones">
               <div class="elemento">
-                <label for="declaracionesJuradas">Declraciones juradas</label>
-                <input type="number" id="declaraconesJuradas" min="0" required>
+                <label for="declaracionesJuradas">Declaraciones juradas</label>
+                <input type="number" id="declaracionesJuradas" min="0" required>
               </div>
 
               <div class="elemento">
@@ -100,12 +99,17 @@
               </div>
 
               <div class="elemento">
-                <label for="pedidoValoresFiscales">Reconsideración valores fiscales</label>
-                <input type="number" id="pedidoValoresFiscales" min="0" required>
+                <label for="valuacionFiscal">Reconsideración valuación fiscales</label>
+                <input type="number" id="valuacionFiscal" min="0" required>
               </div>
 
               <div class="elemento">
-                <label for="reconsideracionVir">Reconsideracion vir</label>
+                <label for="ganadera">Receptividad Gandera</label>
+                <input type="number" id="ganadera" min="0" required> 
+              </div>
+
+              <div class="elemento">
+                <label for="vir">Reconsideración de VIR</label>
                 <input type="number" id="vir" min="0" required> 
               </div>
 
@@ -115,6 +119,39 @@
               </div>
             </form>
           </section>
+
+          <section class="botonesValuaciones">
+            <button class="calcular-btn btn" id="calcular-btnValuaciones" type="button">
+              Calcular
+            </button>
+    
+            <button class="borrar-btn btn" id="borrar-btnValuaciones" type="button">
+              Borrar
+            </button>
+          </section>
+        
+          <div class="container-resultados" id="tablaValuaciones">
+            <table class="tabla">
+              <caption>Información de Valuaciones</caption>
+              <thead>
+                <tr>
+                  <th>Datos ingresados</th>
+                  <th>Cantidad</th>
+                  <th>Valor modular</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody class="resultados" id="resultadosValuaciones"></tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3">Pago total:</td>
+                  <td id="abonarValuaciones"></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          
   </body>
   <script src="./formularios/mensura.js" type="module"></script>
+  <script src="./formularios/valuaciones.js" type="module"></script>
 </html>

@@ -21,6 +21,7 @@ html {
   position: relative;
   width: 300px;
   font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
 }
 
 .elemento input[type="number"] {
@@ -57,7 +58,7 @@ legend {
 }
 
 .tabla {
-  width: 100%;
+  width: 120%;
   border-collapse: collapse;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #4742425b;
@@ -66,12 +67,12 @@ legend {
 thead {
   background-color: #5f564a46;
   border-bottom: solid;
-  color: #333333;
+  color: whitesmoke;
 }
 
 .tabla th,
 .tabla td {
-  padding: 3px;
+  padding: 6px;
   text-align: center;
   border-bottom: 2px solid #808080;
 }
@@ -83,11 +84,11 @@ tr:nth-ch(even) {
 .total {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 120%;
   margin-right: 8px;
   background-color: #323b42;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  color: #ccc;
+  color: #fff;
 }
 
 .name-input {
@@ -121,7 +122,7 @@ tr:nth-ch(even) {
 
 .btn {
   padding: 1rem 1.5rem;
-  margin-left: 5px;
+  margin-left: 25px;
   font-size: 12px;
   font-weight: semibold;
   cursor: pointer;
@@ -152,9 +153,21 @@ button :active {
 
 .volver-btn {
   background-color: #f1c40e;
+  margin-left: 600px;
 }
 
-.valuaciones {
+/* MENSURA */
+.mensura {
+  display: none;
+}
+legend {
+  display: none;
+}
+fieldset {
+  display: none;
+}
+
+.botonesMensura {
   display: none;
 }
 

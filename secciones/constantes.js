@@ -1,8 +1,8 @@
 /**
- * CONSTANTES GENERALES
+ * CONSTANTES GENERALES.
  */
-export const multiplicador = 2.5; //Indice para calcular los montos
-export const porcentajePreferencial = 500; //Porcentaje preferencial
+export const multiplicador = 2.5; //Indice para calcular los montos.
+export const porcentajePreferencial = 500; //Porcentaje preferencial.
 
 /**
  * CONSTANTES MENSURA
@@ -15,31 +15,17 @@ export const modulos = [
 ];
 
 /**
- * CONSTANTES VALORES MODULARES
+ * CONSTANTES VALORES MODULARES.
  */
 const precioDdjj = 200 * multiplicador;
 const precioUnidadFuncional = 500 * multiplicador;
 const precioCementerio = 100 * multiplicador;
 const precioParcelario = 1500 * multiplicador;
 const precioEstudio = 700 * multiplicador;
+const precioValoresFiscal = 600 * multiplicador;
+const precioValuacionFiscal = 500 * multiplicador;
+const precioReceptividadGanadera = 500 * multiplicador;
 const precioVir = 700 * multiplicador;
-const precioValorFiscal = 600 * multiplicador;
-const precioValuacioFiscal = 500 * multiplicador;
-const precioGanadera = 500 * multiplicador;
-
-/**
- * CONSTANTES FORMULARIO MENSURA
- */
-const formularioMensura = document.getElementById("formularioMensura");
-const resultadosMensura = document.getElementById("resultadosMensura");
-const tablaMensura = document.getElementById("tablaMensura");
-
-/**
- * CONSTANTES FORMULARIO VALUACIONES
- */
-const formularioValuaciones = document.getElementById("formularioValuaciones");
-const resultadosValuaciones = document.getElementById("resultadosValuaciones");
-const tablaValuaciones = document.getElementById("tablaValuaciones");
 
 export const valoresMensura = [
   precioDdjj,
@@ -50,8 +36,9 @@ export const valoresMensura = [
 ];
 
 export const valoresValuaciones = [
+  precioDdjj,
+  precioValoresFiscal,
+  precioValuacionFiscal,
+  precioReceptividadGanadera,
   precioVir,
-  precioValorFiscal,
-  precioValuacioFiscal,
-  precioGanadera,
 ];

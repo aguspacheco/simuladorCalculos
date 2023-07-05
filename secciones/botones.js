@@ -1,6 +1,8 @@
 const borrarBtnMensura = document.getElementById("borrar-btn");
 const volverBtnMensura = document.getElementById("volver-btn");
 const calcularBtnMensura = document.getElementById("calcular-btn");
+const calcularBtnValuaciones = document.getElementById("calcular-btn");
+const borrarBtnValuaciones = document.getElementById("borrar-btn");
 
 /**
  * Calcula los resultados en la tabla y esconde el formulario y muestra el boton de borrar y volver.
@@ -9,7 +11,7 @@ export function calcularMensura() {
   formularioMensura.style.display = "none";
   borrarBtnMensura.style.display = "none";
   tablaMensura.style.display = "inline-block";
-  volverBtnMensura.style.display = "inline-block";
+  volverBtnMensura.style.display = "block";
   calcularBtnMensura.style.display = "none";
 }
 
@@ -42,9 +44,13 @@ export function borrarMensura() {
 
   datos.forEach((datos) => {
     document.getElementById(datos).value = "";
-  });
-
-  datos.forEach((datos) => {
     document.getElementById("preferencialMensura").checked = false;
   });
+}
+export function calcularValuaciones() {
+  formularioValuaciones.style.display = "none";
+  borrarBtnValuaciones.style.display = "none";
+  tablaValuaciones.style.display = "inline-block";
+  // volverBtnValuaciones.style.display = "block";
+  calcularBtnValuaciones.style.display = "none";
 }

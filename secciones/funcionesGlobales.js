@@ -1,6 +1,7 @@
 import {
   porcentajePreferencial,
   valoresMensura,
+  valoresValuaciones,
   modulos,
 } from "./constantes.js";
 
@@ -33,7 +34,7 @@ export function verTotal(total, abonar) {
  * @param {number} cantidad  - La cantidad que se ingreso en el formulario.
  * @param {number} valorModular - El valor modular de cada elemento que hay en la fila.
  */
-export function agregarFila(etiqueta, cantidad, valorModular = 0, tabla) {
+export function agregarFila(etiqueta, cantidad, valorModular, tabla) {
   const fila = document.createElement("tr");
   fila.innerHTML = `
         <th class = "texto-izquierda">${etiqueta}</th> 
@@ -43,6 +44,7 @@ export function agregarFila(etiqueta, cantidad, valorModular = 0, tabla) {
         `;
   tabla.appendChild(fila);
 }
+
 export function agregarFilaPreferencial(etiqueta, preferencial, monto, tabla) {
   const fila = document.createElement("tr");
   fila.innerHTML = `
@@ -58,6 +60,13 @@ export function mostrarTotalMensura() {
   const total = calcularTotal(datosEntrada);
   creaTablaResultados(datosEntrada);
   verTotal(total, "abonarMensura");
+}
+
+export function mostrarTotalValuaciones() {
+  const datosEntrada = recibirDatosEntradaValuaciones();
+  const total = calcularTotalValuaciones(datosEntrada);
+  creaTablaResultadosValuaciones(datosEntrada);
+  verTotal(total, "abonarValuaciones");
 }
 
 /**
@@ -118,6 +127,7 @@ function calcularTotal({
 
   return Math.round(total * 100) / 100;
 }
+
 function totalPreferencial(
   parcelas,
   ddjj,
@@ -125,8 +135,7 @@ function totalPreferencial(
   cementerio,
   estudio,
   estadoParcelario,
-  valoresMensura,
-  modulos
+  valoresMensura
 ) {
   // Calcular el total inicial sumando los valores de los módulos multiplicados por la cantidad.
   let total =
@@ -217,7 +226,7 @@ function creaTablaResultados(datosEntrada) {
     : 0;
 
   agregarFilaPreferencial(
-    "preferencial",
+    "Preferencial",
     preferencial,
     precioPreferencial,
     resultadosMensura
@@ -236,3 +245,106 @@ function parcelasValorModular(parcelas) {
   });
   return moduloUbicado ? moduloUbicado.valor : 0;
 }
+export function tomarValoresEntrada() {
+  const ddjj =
+    parseInt(document.getElementById("declaracionesJuradas").value) || 0;
+  const valoresFiscales =
+    parseInt(document.getElementById("valoresFiscales").value) || 0;
+  const valuacionFiscal =
+    parseInt(document.getElementById("valuacionFiscal").value) || 0;
+  const ganadera = parseInt(document.getElementById("ganadera").value) || 0;
+  const vir = parseInt(document.getElementById("vir").value) || 0;
+  const preferencial = document.getElementById(
+    "preferencialValuaciones"
+  ).checked;
+
+  return {
+    ddjj,
+    valoresFiscales,
+    valuacionFiscal,
+    ganadera,
+    vir,
+    preferencial,
+  };
+}
+
+function calcularValuaciones({
+  ddjj,
+  valoresFiscales,
+  valuacionFiscal,
+  ganadera,
+  vir,
+}) {
+  let total =
+    ddjj * valoresValuaciones[0] +
+    valoresFiscales * valoresValuaciones[1] +
+    valuacionFiscal * valoresValuaciones[2] +
+    ganadera * valoresFiscales[3] +
+    vir * valoresFiscales[4];
+
+  if (preferencial) total *= 1 + porcentajePreferencial / 100;
+
+  return total;
+}
+
+function PreferencialValuaciones(
+  ddjj,
+  valoresFiscales,
+  valuacionFiscal,
+  ganadera,
+  vir,
+  valoresValuaciones
+) {
+  let total =
+    ddjj * valoresValuaciones[0] +
+    valoresFiscales * valoresValuaciones[1] +
+    valuacionFiscal * valoresValuaciones[2] +
+    ganadera * valoresValuaciones[3] +
+    vir * valoresFiscales[4];
+
+  return (total * porcentajePreferencial) / 100;
+}
+
+function TablaValuaciones(valoresEntrada) {
+  const { ddjj, valoresFiscales, valuacionFiscal, ganadera, vir } =
+    valoresEntrada;
+
+  agregarFila(
+    "Declaraciones juradas",
+    ddjj,
+    valoresValuaciones[0],
+    resultadosValuaciones
+  );
+
+  agregarFila(
+    "Valores fiscales",
+    valoresFiscales,
+    valoresValuaciones[1],
+    resultadosValuaciones
+  );
+
+  agregarFila(
+    "Valuación fiscal",
+    valuacionFiscal,
+    valoresValuaciones[2],
+    resultadosValuaciones
+  );
+
+  agregarFila(
+    "Receptividad ganadera",
+    ganadera,
+    valoresValuaciones[3],
+    resultadosValuaciones
+  );
+
+  agregarFila(
+    "Reconsidereación de vir",
+    valoresValuaciones[4],
+    resultadosValuaciones
+  );
+}
+
+// const precioPreferencialValuaciones = preferencial
+//   ? totalPreferencial(
+  
+// )
