@@ -16,6 +16,9 @@ html {
   padding: 15px;
   border-radius: 15px;
 }
+.tabla {
+  display: none;
+}
 
 .elemento label {
   position: relative;

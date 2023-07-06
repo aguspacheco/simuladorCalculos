@@ -1,4 +1,4 @@
-import { mostrarTotalMensura } from "../secciones/funcionesGlobales.js";
+import { mostrarTotalMensura } from "../secciones/funcionesMensura.js";
 import {
   calcularMensura,
   volverMensura,

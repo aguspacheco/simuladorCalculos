@@ -1,9 +1,11 @@
 const borrarBtnMensura = document.getElementById("borrar-btn");
 const volverBtnMensura = document.getElementById("volver-btn");
 const calcularBtnMensura = document.getElementById("calcular-btn");
-const calcularBtnValuaciones = document.getElementById("calcular-btn");
-const borrarBtnValuaciones = document.getElementById("borrar-btn");
-
+const calcularBtnValuaciones = document.getElementById(
+  "calcular-btnValuaciones"
+);
+const borrarBtnValuaciones = document.getElementById("borrar-btnValuaciones");
+const tablaValuaciones = document.getElementById("tabla");
 /**
  * Calcula los resultados en la tabla y esconde el formulario y muestra el boton de borrar y volver.
  */
@@ -41,7 +43,6 @@ export function borrarMensura() {
     "cementerio",
     "preferencialMensura",
   ];
-
   datos.forEach((datos) => {
     document.getElementById(datos).value = "";
     document.getElementById("preferencialMensura").checked = false;
@@ -51,6 +52,20 @@ export function calcularValuaciones() {
   formularioValuaciones.style.display = "none";
   borrarBtnValuaciones.style.display = "none";
   tablaValuaciones.style.display = "inline-block";
-  // volverBtnValuaciones.style.display = "block";
   calcularBtnValuaciones.style.display = "none";
+}
+
+export function borrarValuaciones() {
+  const elementos = [
+    "declaracionesJuradas",
+    "valoresFiscales",
+    "valuacionFiscal",
+    "ganadera",
+    "vir",
+    "preferencialValuaciones",
+  ];
+  elementos.forEach((elementos) => {
+    document.getElementById(elementos).value = "";
+    document.getElementById("preferencialValuaciones").checked = false;
+  });
 }
