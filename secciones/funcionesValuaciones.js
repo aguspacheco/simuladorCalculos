@@ -59,8 +59,8 @@ function calcularValuaciones({
     ddjj * valoresValuaciones[0] +
     valoresFiscales * valoresValuaciones[1] +
     valuacionFiscal * valoresValuaciones[2] +
-    ganadera * valoresFiscales[3] +
-    vir * valoresFiscales[4];
+    ganadera * valoresValuaciones[3] +
+    vir * valoresValuaciones[4];
 
   if (PreferencialValuaciones) total *= 1 + porcentajePreferencial / 100;
 

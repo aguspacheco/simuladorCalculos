@@ -10,14 +10,16 @@ html {
   grid-area: 1 / 2 / 2 / 2;
 }
 
+.valuaciones {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
 .formulario {
   display: flex;
   flex-direction: column;
   padding: 15px;
   border-radius: 15px;
-}
-.tabla {
-  display: none;
+  margin-bottom: 10px;
 }
 
 .elemento label {
@@ -130,11 +132,11 @@ tr:nth-ch(even) {
   font-weight: semibold;
   cursor: pointer;
   transition: all 1s ease;
-  box-shadow: 0.5rem 0.5rem 1rem #ccc, -0.5rem 1rem #fff;
   background-color: transparent;
   border: 2px solid #eee;
   border-radius: 0.5rem;
   color: #ffff;
+  margin-bottom: 10px;
 }
 
 .btn:hover {
@@ -144,6 +146,10 @@ tr:nth-ch(even) {
 
 button :active {
   box-shadow: inset 0.2rem 0.2rem 1rem #fff, inset -0.2rem 1rem #ccc;
+}
+
+.botonesValuaciones {
+  margin-top: 10px;
 }
 
 .calcular-btn {
@@ -159,25 +165,14 @@ button :active {
   margin-left: 600px;
 }
 
-/* MENSURA */
-.mensura {
-  display: none;
-}
-legend {
-  display: none;
-}
-fieldset {
-  display: none;
-}
-
-.botonesMensura {
-  display: none;
-}
-
 .conteinerResultados {
   display: none;
 }
 
 .volver-btn {
+  display: none;
+}
+
+.tabla {
   display: none;
 }

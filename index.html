@@ -86,41 +86,44 @@
             Volver
           </button>
 
-          <section class="valuaciones">
-            <form class="formulario" id="formularioValuaciones">
-              <div class="elemento">
-                <label for="declaracionesJuradas">Declaraciones juradas</label>
-                <input type="number" id="declaracionesJuradas" min="0" required>
-              </div>
-
-              <div class="elemento">
-                  <label for="valoresFiscales">Valores fiscales</label>
-                  <input type="number" id="valoresFiscales" min="0" required>
-              </div>
-
-              <div class="elemento">
-                <label for="valuacionFiscal">Reconsideración valuación fiscales</label>
-                <input type="number" id="valuacionFiscal" min="0" required>
-              </div>
-
-              <div class="elemento">
-                <label for="ganadera">Receptividad Gandera</label>
-                <input type="number" id="ganadera" min="0" required> 
-              </div>
-
-              <div class="elemento">
-                <label for="vir">Reconsideración de VIR</label>
-                <input type="number" id="vir" min="0" required> 
-              </div>
-
-              <div class="elemento">
-                <label for="preferencialValuaciones">Preferencial</label>
-                <input type="checkbox" id="preferencialValuaciones"/>
-              </div>
-            </form>
-          </section>
-
-          <section class="botonesValuaciones" id="b">
+          <fieldset>
+            <legend><b>Simulador Valuaciones</b></legend>
+            <section class="valuaciones">
+              <form class="formulario" id="formularioValuaciones">
+                <div class="elemento">
+                  <label for="declaracionesJuradas">Declaraciones juradas</label>
+                  <input type="number" id="declaracionesJuradas" min="0" required>
+                </div>
+  
+                <div class="elemento">
+                    <label for="valoresFiscales">Valores fiscales</label>
+                    <input type="number" id="valoresFiscales" min="0" required>
+                </div>
+  
+                <div class="elemento">
+                  <label for="valuacionFiscal">Reconsideración valuación fiscales</label>
+                  <input type="number" id="valuacionFiscal" min="0" required>
+                </div>
+  
+                <div class="elemento">
+                  <label for="ganadera">Receptividad Gandera</label>
+                  <input type="number" id="ganadera" min="0" required> 
+                </div>
+  
+                <div class="elemento">
+                  <label for="vir">Reconsideración de VIR</label>
+                  <input type="number" id="vir" min="0" required> 
+                </div>
+  
+                <div class="elemento">
+                  <label for="preferencialValuaciones">Preferencial</label>
+                  <input type="checkbox" id="preferencialValuaciones"/>
+                </div>
+              </form>
+            </section>
+          </fieldset>
+          
+          <section class="botonesValuaciones">
             <button class="calcular-btn btn" id="calcular-btnValuaciones" type="button">
               Calcular
             </button>
