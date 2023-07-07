@@ -5,6 +5,21 @@ export const multiplicador = 2.5; //Indice para calcular los montos.
 export const porcentajePreferencial = 500; //Porcentaje preferencial.
 
 /**
+ * CONSTANTES PARA LOS BOTONES Y FORMUALRIOS.
+ */
+export const borrarBtnMensura = document.getElementById("borrar-btn");
+export const volverBtnMensura = document.getElementById("volver-btn");
+export const calcularBtnMensura = document.getElementById("calcular-btn");
+export const calcularBtnValuaciones = document.getElementById(
+  "calcular-btnValuaciones"
+);
+export const tablaValuaciones = document.getElementById("tabla");
+/** */
+export const formularioValuaciones = document.getElementById(
+  "formularioValuaciones"
+);
+
+/**
  * CONSTANTES MENSURA
  */
 export const modulos = [

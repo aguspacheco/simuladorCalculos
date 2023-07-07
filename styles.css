@@ -6,20 +6,20 @@ html {
   position: absolute;
 }
 
-.mensura {
-  grid-area: 1 / 2 / 2 / 2;
-}
-
-.valuaciones {
-  grid-area: 2 / 1 / 3 / 2;
-}
-
-.formulario {
+.formularioMensura {
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  border-radius: 15px;
-  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.formularioValuaciones {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
 }
 
 .elemento label {
@@ -43,8 +43,9 @@ html {
 }
 
 input[type="checkbox"] {
-  width: 80px;
+  width: 50px;
   justify-content: center;
+  cursor: pointer;
 }
 
 fieldset {
@@ -92,37 +93,8 @@ tr:nth-ch(even) {
   width: 120%;
   margin-right: 8px;
   background-color: #323b42;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: #fff;
-}
-
-.name-input {
-  width: 50px;
-  padding: 0;
-  border: none;
-  border-bottom: 2px solid #ccc;
-  outline: none;
-  background: transparent;
-  color: black;
-  font-size: 2px;
-}
-
-.name-label {
-  position: absolute;
-  left: 0;
-  padding: 0;
-  color: black;
-  font-size: 15px;
-  pointer-events: none;
-  transition: 0.5s;
-}
-
-.name-input:valid ~ .name-label,
-.name-input:focus ~ .name-label {
-  transition: all 0.5s ease-in;
-  color: #95a6a7;
-  outline: none;
-  color: #95a6a7;
 }
 
 .btn {
@@ -136,7 +108,7 @@ tr:nth-ch(even) {
   border: 2px solid #eee;
   border-radius: 0.5rem;
   color: #ffff;
-  margin-bottom: 10px;
+  margin-bottom: 1px;
 }
 
 .btn:hover {
@@ -150,8 +122,15 @@ button :active {
 
 .botonesValuaciones {
   margin-top: 10px;
+  margin-right: 50px;
+  display: flex;
 }
 
+.botonesMensura {
+  margin-top: 10px;
+  margin-right: 50px;
+  display: flex;
+}
 .calcular-btn {
   background-color: #0f4d75;
 }
@@ -165,14 +144,14 @@ button :active {
   margin-left: 600px;
 }
 
-.conteinerResultados {
-  display: none;
-}
-
 .volver-btn {
   display: none;
 }
 
-.tabla {
+#tablaValuaciones {
+  display: none;
+}
+
+#tablaMensura {
   display: none;
 }

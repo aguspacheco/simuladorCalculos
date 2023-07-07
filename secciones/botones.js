@@ -1,19 +1,18 @@
-const borrarBtnMensura = document.getElementById("borrar-btn");
-const volverBtnMensura = document.getElementById("volver-btn");
-const calcularBtnMensura = document.getElementById("calcular-btn");
-const calcularBtnValuaciones = document.getElementById(
-  "calcular-btnValuaciones"
-);
-const borrarBtnValuaciones = document.getElementById("borrar-btnValuaciones");
-const tablaValuaciones = document.getElementById("tabla");
+import {
+  formularioMensura,
+  calcularBtnMensura,
+  calcularBtnValuaciones,
+  borrarBtnMensura,
+  volverBtnMensura,
+} from "./constantes.js";
+
 /**
  * Calcula los resultados en la tabla y esconde el formulario y muestra el boton de borrar y volver.
  */
 export function calcularMensura() {
-  formularioMensura.style.display = "none";
-  borrarBtnMensura.style.display = "none";
-  tablaMensura.style.display = "inline-block";
-  volverBtnMensura.style.display = "block";
+  document.getElementById("contenedorMensura").style.display = "none";
+  document.getElementById("borrar-btn").style.display = "none";
+  tablaMensura.style.display = "none";
   calcularBtnMensura.style.display = "none";
 }
 
@@ -24,7 +23,7 @@ export function volverMensura() {
   resultadosMensura.innerHTML = "";
   tablaMensura.style.display = "none";
   formularioMensura.style.display = "block";
-  borrarBtnMensura.style.display = "inline-block";
+  document.getElementById("borrar-btn").style.display = "inline-block";
   volverBtnMensura.style.display = "none";
   calcularBtnMensura.style.display = "inline-block";
 }
@@ -49,9 +48,9 @@ export function borrarMensura() {
   });
 }
 export function calcularValuaciones() {
-  formularioValuaciones.style.display = "none";
-  borrarBtnValuaciones.style.display = "none";
-  tablaValuaciones.style.display = "inline-block";
+  document.getElementById("contenedorValuaciones").style.display = "none";
+  document.getElementById("borrar-btnValuaciones").style.display = "none";
+  tablaValuaciones.style.display = "table";
   calcularBtnValuaciones.style.display = "none";
 }
 

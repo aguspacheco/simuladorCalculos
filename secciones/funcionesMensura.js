@@ -17,7 +17,20 @@ export function mostrarTotalMensura() {
 }
 
 /**
- * RECIBE LOS VALORES DE ENTRADA QUE SON INGRESADOS  POR EL USUARIO EN EL FORMULARIO.
+ * DEVUELVE EL VALOR MODULAR QUE CORRESPONDE A LA CANTIDAD DE PARCELAS INGRESADAS.
+ * @param {Number} parcelas - La cantidad de parcelas que se ingresan.
+ * @returns {Number} - El valor modular que se corresponde a la cantidad de parcelas ingresdas.
+ */
+function parcelasValorModular(parcelas) {
+  const moduloUbicado = modulos.find((modulo) => {
+    const [min, max] = modulo.rango;
+    return parcelas >= min && parcelas <= max;
+  });
+  return moduloUbicado ? moduloUbicado.valor : 0;
+}
+
+/**
+ * RECIBE LOS VALORES DE ENTRADA QUE SON INGRESADOS POR EL USUARIO EN EL FORMULARIO.
  * @returns {Object} -Un objeto con los valores que ingreso el usuario en el formulario.
  */
 export function recibirDatosEntrada() {

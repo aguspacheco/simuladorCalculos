@@ -7,55 +7,53 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <class="parent">
-      <form class="formulario" id="formularioMensura">
-      <fieldset>
+    <section class="mensura">
+      <fieldset id="contenedorMensura">
         <legend><b>Simulador Mensura</b></legend>
-        <section class="mensura">
-            <div class="elemento">
-              <label for="origen">Parcelas Origen *</label>
-              <input type="number" id="origen" min="0" required />
-            </div>
+        <form class="formulario" id="formularioMensura">
+          <div class="elemento">
+            <label for="origen">Parcelas Origen *</label>
+            <input type="number" id="origen" min="0" required />
+          </div>
 
-            <div class="elemento">
-              <label for="resultante">Parcelas Resultantes *</label>
-              <input type="number" id="resultante" min="0" required />
-            </div>
+          <div class="elemento">
+            <label for="resultante">Parcelas Resultantes *</label>
+            <input type="number" id="resultante" min="0" required />
+          </div>
 
-            <div class="elemento">
-              <label for="uFuncional">Unidad Funcional</label>
-              <input type="number" id="ufuncional" min="0" required />
-            </div>
+          <div class="elemento">
+            <label for="uFuncional">Unidad Funcional</label>
+            <input type="number" id="ufuncional" min="0" required />
+          </div>
 
-            <div class="elemento">
-              <label for="ddjj">Declaración Jurada</label>
-              <input type="number" id="ddjj" min="0" required />
-            </div>
+          <div class="elemento">
+            <label for="ddjj">Declaración Jurada</label>
+            <input type="number" id="ddjj" min="0" required />
+          </div>
 
-            <div class="elemento">
-             <label for="estadoParcelario">Verificación Estado Parcelario</label>
-              <input type="number" id="estadoParcelario" min="0" required />
-            </div>
+          <div class="elemento">
+            <label for="estadoParcelario">Verificación Estado Parcelario</label>
+            <input type="number" id="estadoParcelario" min="0" required />
+          </div>
 
-            <div class="elemento">
-              <label for="estudio">Estudio de titulo y antecedente dominal</label>
-              <input type="number" id="estudio" min="0" required />
-            </div>
+          <div class="elemento">
+            <label for="estudio">Estudio de titulo y antecedente dominal</label>
+            <input type="number" id="estudio" min="0" required />
+          </div>
 
-            <div class="elemento">
-              <label for="cementerio">Cementerio</label>
-              <input type="number" id="cementerio" min="0" required />
-            </div>
+          <div class="elemento">
+            <label for="cementerio">Cementerio</label>
+            <input type="number" id="cementerio" min="0" required />
+          </div>
 
-            <div class="elemento">
-              <label for="preferencial">Preferencial</label>
-              <input type="checkbox" id="preferencialMensura" />
-            </div>
-          </form>
-        </section>
+          <div class="elemento">
+            <label for="preferencial">Preferencial</label>
+            <input type="checkbox" id="preferencialMensura" />
+          </div>
+        </form>
       </fieldset>
-        
-      <section class="botonesMensura">
+
+      <div class="botonesMensura">
         <button class="calcular-btn btn" id="calcular-btn" type="button">
           Calcular
         </button>
@@ -63,97 +61,111 @@
         <button class="borrar-btn btn" id="borrar-btn" type="button">
           Borrar
         </button>
-      </section>
+      </div>
 
-          <div class="conteinerResultados" id="tablaMensura">
-            <table class="tabla">
-              <thead>
-                <tr>
-                  <th>Datos Ingresados</th>
-                  <th>Cantidad</th>
-                  <th>Valor modular</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody class="resultados" id="resultadosMensura"></tbody>
-            </table>
-            <div class="total" id="totalMensura">
-              <label for="resultado">Total A pagar:</label>
-                <div id="abonarMensura"></div>
-            </div>
-          </div>
-          <button class="volver-btn btn" id="volver-btn" type="button">
-            Volver
-          </button>
+        <table class="tablaMensura">
+          <caption>
+            Resultados de Mensura
+          </caption>
+          <thead>
+            <tr>
+              <th>Datos Ingresados</th>
+              <th>Cantidad</th>
+              <th>Valor modular</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody class="resultados" id="resultadosMensura"></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">Pago total:</td>
+              <td id="abonarMensura"></td>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="total" id="totalMensura">
+          <label for="resultado">Total A pagar:</label>
+          <div id="abonarMensura"></div>
+        </div>
+      </div>
+      <button class="volver-btn btn" id="volver-btn" type="button">
+        Volver
+      </button>
+    </section>
 
-          <fieldset>
-            <legend><b>Simulador Valuaciones</b></legend>
-            <section class="valuaciones">
-              <form class="formulario" id="formularioValuaciones">
-                <div class="elemento">
-                  <label for="declaracionesJuradas">Declaraciones juradas</label>
-                  <input type="number" id="declaracionesJuradas" min="0" required>
-                </div>
-  
-                <div class="elemento">
-                    <label for="valoresFiscales">Valores fiscales</label>
-                    <input type="number" id="valoresFiscales" min="0" required>
-                </div>
-  
-                <div class="elemento">
-                  <label for="valuacionFiscal">Reconsideración valuación fiscales</label>
-                  <input type="number" id="valuacionFiscal" min="0" required>
-                </div>
-  
-                <div class="elemento">
-                  <label for="ganadera">Receptividad Gandera</label>
-                  <input type="number" id="ganadera" min="0" required> 
-                </div>
-  
-                <div class="elemento">
-                  <label for="vir">Reconsideración de VIR</label>
-                  <input type="number" id="vir" min="0" required> 
-                </div>
-  
-                <div class="elemento">
-                  <label for="preferencialValuaciones">Preferencial</label>
-                  <input type="checkbox" id="preferencialValuaciones"/>
-                </div>
-              </form>
-            </section>
-          </fieldset>
-          
-          <section class="botonesValuaciones">
-            <button class="calcular-btn btn" id="calcular-btnValuaciones" type="button">
-              Calcular
-            </button>
-    
-            <button class="borrar-btn btn" id="borrar-btnValuaciones" type="button">
-              Borrar
-            </button>
-          </section>
-        
-          <div class="container-resultados" id="tablaValuaciones">
-            <table class="tabla" id = "tabla">
-              <caption>Información de Valuaciones</caption>
-              <thead>
-                <tr>
-                  <th>Datos ingresados</th>
-                  <th>Cantidad</th>
-                  <th>Valor modular</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody class="resultados" id="resultadosValuaciones"></tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="1">Pago total:</td>
-                  <td id="abonarValuaciones"></td>
-                </tr>
-              </tfoot>
-            </table>
+    <section class="valuaciones">
+      <fieldset id="contenedorValuaciones">
+        <legend><b>Simulador Valuaciones</b></legend>
+        <form class="formulario" id="formularioValuaciones">
+          <div class="elemento">
+            <label for="declaracionesJuradas">Declaraciones juradas</label>
+            <input type="number" id="declaracionesJuradas" min="0" required />
           </div>
-          
+
+          <div class="elemento">
+            <label for="valoresFiscales">Valores fiscales</label>
+            <input type="number" id="valoresFiscales" min="0" required />
+          </div>
+
+          <div class="elemento">
+            <label for="valuacionFiscal"
+              >Reconsideración de valuación fiscal</label
+            >
+            <input type="number" id="valuacionFiscal" min="0" required />
+          </div>
+
+          <div class="elemento">
+            <label for="ganadera">Receptividad Gandera</label>
+            <input type="number" id="ganadera" min="0" required />
+          </div>
+
+          <div class="elemento">
+            <label for="vir">Reconsideración de VIR</label>
+            <input type="number" id="vir" min="0" required />
+          </div>
+
+          <div class="elemento">
+            <label for="preferencialValuaciones">Preferencial</label>
+            <input type="checkbox" id="preferencialValuaciones" />
+          </div>
+        </form>
+      </fieldset>
+
+      <div class="botonesValuaciones">
+        <button
+          class="calcular-btn btn"
+          id="calcular-btnValuaciones"
+          type="button"
+        >
+          Calcular
+        </button>
+
+        <button class="borrar-btn btn" id="borrar-btnValuaciones" type="button">
+          Borrar
+        </button>
+      </div>
+
+      <table id="tablaValuaciones">
+        <caption>
+          Tabla generada de Valuaciones
+        </caption>
+        <thead>
+          <tr>
+            <th>Datos ingresados</th>
+            <th>Cantidad</th>
+            <th>Valor modular</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody class="resultados" id="resultadosValuaciones"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Pago total:</td>
+            <td id="abonarValuaciones"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
   </body>
   <script src="./formularios/mensura.js" type="module"></script>
   <script src="./formularios/valuaciones.js" type="module"></script>
