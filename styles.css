@@ -22,6 +22,11 @@ html {
   margin-bottom: 5px;
 }
 
+caption {
+  background: linear-gradient(to bottom, #f3f3f3, #b3d1c8);
+  font-family: cursive;
+}
+
 .elemento label {
   position: relative;
   width: 300px;
@@ -63,38 +68,32 @@ legend {
   color: white;
 }
 
-.tabla {
-  width: 120%;
+table {
+  background-color: white;
+  text-align: center;
   border-collapse: collapse;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #4742425b;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 thead {
-  background-color: #5f564a46;
-  border-bottom: solid;
-  color: whitesmoke;
-}
-
-.tabla th,
-.tabla td {
-  padding: 6px;
+  background-color: #b3d1c8;
+  border-bottom: solid 5px;
+  color: #2b3d4f;
   text-align: center;
-  border-bottom: 2px solid #808080;
 }
 
-tr:nth-ch(even) {
-  background-color: #dddddd;
+tr:nth-child(even) {
+  background-color: #ddd;
 }
 
-.total {
-  display: flex;
-  justify-content: space-between;
-  width: 120%;
-  margin-right: 8px;
-  background-color: #323b42;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #fff;
+tr:hover {
+  background-color: #b3d1c8;
+}
+
+td {
+  text-align: start;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .btn {
@@ -153,5 +152,9 @@ button :active {
 }
 
 #tablaMensura {
+  display: none;
+}
+
+.valuaciones {
   display: none;
 }

@@ -44,9 +44,14 @@ export function agregarFilaPreferencial(etiqueta, preferencial, monto, tabla) {
   const fila = document.createElement("tr");
   fila.innerHTML = `
       <th class = "texto-izquierda">${etiqueta}</th>
-      <td>${preferencial ? "Si" : "No"}</td> 
+      <td>${preferencial ? "Si✔" : "No"}</td> 
       <td>${preferencial ? porcentajePreferencial : 0}%</td>
       <td>${formatoPesoArgentino(monto)}</td>
       `;
   tabla.appendChild(fila);
+}
+
+export function abrirVentana() {
+  
+  
 }

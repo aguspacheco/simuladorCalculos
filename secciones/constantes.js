@@ -13,11 +13,12 @@ export const calcularBtnMensura = document.getElementById("calcular-btn");
 export const calcularBtnValuaciones = document.getElementById(
   "calcular-btnValuaciones"
 );
-export const tablaValuaciones = document.getElementById("tabla");
-/** */
+export const tablaValuaciones = document.getElementById("tablaValuaciones");
+export const tablaMensura = document.getElementById("tablaMensura");
 export const formularioValuaciones = document.getElementById(
   "formularioValuaciones"
 );
+export const formularioMensura = document.getElementById("formularioMensura");
 
 /**
  * CONSTANTES MENSURA

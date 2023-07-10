@@ -1,8 +1,8 @@
 import {
-  formularioMensura,
   calcularBtnMensura,
   calcularBtnValuaciones,
-  borrarBtnMensura,
+  tablaMensura,
+  tablaValuaciones,
   volverBtnMensura,
 } from "./constantes.js";
 
@@ -12,7 +12,7 @@ import {
 export function calcularMensura() {
   document.getElementById("contenedorMensura").style.display = "none";
   document.getElementById("borrar-btn").style.display = "none";
-  tablaMensura.style.display = "none";
+  tablaMensura.style.display = "block";
   calcularBtnMensura.style.display = "none";
 }
 
@@ -21,7 +21,7 @@ export function calcularMensura() {
  */
 export function volverMensura() {
   resultadosMensura.innerHTML = "";
-  tablaMensura.style.display = "none";
+  tablaMensura.style.display = "table";
   formularioMensura.style.display = "block";
   document.getElementById("borrar-btn").style.display = "inline-block";
   volverBtnMensura.style.display = "none";
