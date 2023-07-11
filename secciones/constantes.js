@@ -30,17 +30,23 @@ export const modulos = [
   { rango: [51, Infinity], valor: 500 * multiplicador },
 ];
 
-/**
- * CONSTANTES VALORES MODULARES.
- */
+/**VALOR MODULAR DDJJ */
 const precioDdjj = 200 * multiplicador;
+/**VALOR MODULAR UNIDAD FUNCIONAL */
 const precioUnidadFuncional = 500 * multiplicador;
+/**VALOR MODULAR CEMENTERIO */
 const precioCementerio = 100 * multiplicador;
+/**VALOR MODULAR ESTADO PARCELARIO */
 const precioParcelario = 1500 * multiplicador;
+/**VALOR MODULAR POR ESTUDIO DE ANTECEDENTES */
 const precioEstudio = 700 * multiplicador;
+/**VALOR MODULAR VALOR FISCAL */
 const precioValoresFiscal = 600 * multiplicador;
+/**VALOR MODULAR VALUACION FISCAL */
 const precioValuacionFiscal = 500 * multiplicador;
+/**VALOR MODULAR RECEPTIVIDAD GANADERA */
 const precioReceptividadGanadera = 500 * multiplicador;
+/**VALOR MODULAR DE VIR */
 const precioVir = 700 * multiplicador;
 
 export const valoresMensura = [

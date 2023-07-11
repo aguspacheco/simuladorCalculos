@@ -2,6 +2,9 @@ import {
   porcentajePreferencial,
   valoresMensura,
   modulos,
+  formularioValuaciones,
+  tablaMensura,
+  formularioMensura,
 } from "./constantes.js";
 
 import {
@@ -190,4 +193,17 @@ function creaTablaResultados(datosEntrada) {
     precioPreferencial,
     resultadosMensura
   );
+}
+
+export function abrirVentanaMensura() {
+  var ventanaEmergente = document.getElementById("popUpMensura");
+  formularioValuaciones.style.display = "none";
+  ventanaEmergente.style.display = "block";
+}
+
+export function cerrarMensura() {
+  tablaMensura.style.display = "none";
+  formularioMensura.style.display = "inline-block";
+  formularioValuaciones.style.display = "inline-block";
+  cerrar.style.display = "none";
 }

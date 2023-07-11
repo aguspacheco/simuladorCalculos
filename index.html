@@ -63,27 +63,32 @@
         </button>
       </div>
 
-      <div class="popUp" id="ventanaMensura">
-        <table id="tablaMensura">
-          <caption>
-            Tabla generada de Mensura
-          </caption>
-          <thead>
-            <tr>
-              <th>Datos Ingresados</th>
-              <th>Cantidad</th>
-              <th>Valor modular</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody class="resultados" id="resultadosMensura"></tbody>
-          <tfoot>
-            <tr>
-              <td colspan="3">Pago total:</td>
-              <td id="abonarMensura"></td>
-            </tr>
-          </tfoot>
-        </table>
+      <div class="popUp" id="popUpMensura">
+        <div class="contenidoVentana">
+          <button class="cerrar" id="cerrar" type="button">
+            ❌CERRAR
+          </button>
+          <table id="tablaMensura">
+            <caption>
+              Tabla generada de Mensura
+            </caption>
+            <thead>
+              <tr>
+                <th>Datos Ingresados</th>
+                <th>Cantidad</th>
+                <th>Valor modular</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody class="resultados" id="resultadosMensura"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3">Pago total:</td>
+                <td id="abonarMensura"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     </section>
 

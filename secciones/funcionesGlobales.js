@@ -1,4 +1,10 @@
-import { porcentajePreferencial } from "./constantes.js";
+import {
+  borrarBtnMensura,
+  porcentajePreferencial,
+  tablaMensura,
+  formularioMensura,
+  formularioValuaciones,
+} from "./constantes.js";
 
 /**
  * CAMBIA EL VALOR DE UNA CADENA CON EL FORMATO PESO ARGENTINO.
@@ -51,7 +57,12 @@ export function agregarFilaPreferencial(etiqueta, preferencial, monto, tabla) {
   tabla.appendChild(fila);
 }
 
-export function abrirVentana() {
-  
-  
+export function cerrarVentana() {
+  var ventanaEmergente = document.getElementById("popUpMensura");
+  ventanaEmergente.style.display = "none";
+  resultadosMensura.innerHTML = "";
+  tablaMensura.innerHTML = "";
+  formularioMensura.style.display = "flex";
+  borrarBtnMensura.style.display = "inline-block";
+  formularioValuaciones.style.display = "block";
 }
