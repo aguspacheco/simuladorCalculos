@@ -1,4 +1,8 @@
-import { porcentajePreferencial, valoresValuaciones } from "./constantes.js";
+import {
+  porcentajePreferencial,
+  tablaValuaciones,
+  valoresValuaciones,
+} from "./constantes.js";
 import {
   agregarFila,
   agregarFilaPreferencial,
@@ -126,4 +130,17 @@ function TablaValuaciones(valoresEntrada) {
     precioPreferencialValuaciones,
     resultadosValuaciones
   );
+}
+
+export function abrirPopUp() {
+  var ventana = document.getElementById("popUpValuaciones");
+  formularioMensura.style.display = "none";
+  ventana.style.display = "block";
+}
+
+export function cerrarValuaciones() {
+  tablaValuaciones.style.display = "none";
+  formularioMensura.style.display = "inline-block";
+  formularioValuaciones.style.display = "inline-block";
+  cerrarValuaciones.style.display = "none";
 }

@@ -1,9 +1,12 @@
 import {
   abrirVentanaMensura,
   mostrarTotalMensura,
-  cerrarMensura,
 } from "../secciones/funcionesMensura.js";
-import { calcularMensura, borrarMensura } from "../secciones/botones.js";
+import {
+  calcularMensura,
+  borrarMensura,
+  cerrarMensura,
+} from "../secciones/botones.js";
 
 const calcularBtnMensura = document.getElementById("calcular-btn");
 calcularBtnMensura.addEventListener("click", () => {
@@ -14,7 +17,7 @@ calcularBtnMensura.addEventListener("click", () => {
 
 const cerrarBtnMensura = document.getElementById("cerrar");
 cerrarBtnMensura.addEventListener("click", () => {
-cerrarMensura();
+  cerrarMensura();
 });
 
 const borrarBtnMensura = document.getElementById("borrar-btn");

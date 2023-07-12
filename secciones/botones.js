@@ -1,4 +1,6 @@
 import {
+  borrarBtnMensura,
+  borrarBtnValuaciones,
   calcularBtnMensura,
   calcularBtnValuaciones,
   tablaMensura,
@@ -9,10 +11,8 @@ import {
  * Calcula los resultados en la tabla y esconde el formulario y muestra el boton de borrar y volver.
  */
 export function calcularMensura() {
-  document.getElementById("contenedorMensura").style.display = "none";
-  document.getElementById("borrar-btn").style.display = "none";
-  tablaMensura.style.display = "table";
-  calcularBtnMensura.style.display = "none";
+  document.getElementById("calculosMensura").style.display = "none";
+  document.getElementById("calculosValuaciones").style.display = "none";
 }
 
 /**
@@ -34,11 +34,29 @@ export function borrarMensura() {
     document.getElementById("preferencialMensura").checked = false;
   });
 }
-export function calcularValuaciones() {
+
+export function cerrarMensura() {
+  tablaMensura.style.display = "none";
+  document.getElementById("popUpMensura").style.display = "none";
+  document.getElementById("contenedorMensura").style.display = "block";
+  document.getElementById("contenedorValuaciones").style.display = "block";
+  calcularBtnMensura.style.display = "inline-block";
+  borrarBtnMensura.style.display = "inline-block";
+  cerrar.style.display = "none";
+}
+
+export function cerrarValuaciones() {
+  tablaValuaciones.style.display = "none";
+  document.getElementById("popUpValuaciones").style.display = "none";
+  document.getElementById("contenedorMensura").style.display = "none";
   document.getElementById("contenedorValuaciones").style.display = "none";
-  document.getElementById("borrar-btnValuaciones").style.display = "none";
-  tablaValuaciones.style.display = "table";
-  calcularBtnValuaciones.style.display = "none";
+  calcularBtnValuaciones.style.display = "inline-block";
+  borrarBtnValuaciones.style.display = "inline-block";
+}
+export function calcularValuaciones() {
+  document.getElementById("calculosMensura").style.display = "none";
+  document.getElementById("calculosValuaciones").style.display = "none";
+  
 }
 
 export function borrarValuaciones() {

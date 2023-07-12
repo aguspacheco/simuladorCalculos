@@ -8,8 +8,10 @@ export const porcentajePreferencial = 500; //Porcentaje preferencial.
  * CONSTANTES PARA LOS BOTONES Y FORMUALRIOS.
  */
 export const borrarBtnMensura = document.getElementById("borrar-btn");
-export const volverBtnMensura = document.getElementById("volver-btn");
 export const calcularBtnMensura = document.getElementById("calcular-btn");
+export const borrarBtnValuaciones = document.getElementById(
+  "borrar-btnValuaciones"
+);
 export const calcularBtnValuaciones = document.getElementById(
   "calcular-btnValuaciones"
 );

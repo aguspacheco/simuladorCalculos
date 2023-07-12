@@ -2,9 +2,8 @@ import {
   porcentajePreferencial,
   valoresMensura,
   modulos,
-  formularioValuaciones,
-  tablaMensura,
-  formularioMensura,
+  calcularBtnMensura,
+  borrarBtnMensura,
 } from "./constantes.js";
 
 import {
@@ -197,13 +196,9 @@ function creaTablaResultados(datosEntrada) {
 
 export function abrirVentanaMensura() {
   var ventanaEmergente = document.getElementById("popUpMensura");
-  formularioValuaciones.style.display = "none";
+  document.getElementById("contenedorValuaciones").style.display = "none";
+  document.getElementById("contenedorMensura").style.display = "none";
+  calcularBtnMensura.style.display = "none";
+  borrarBtnMensura.style.display = "none";
   ventanaEmergente.style.display = "block";
-}
-
-export function cerrarMensura() {
-  tablaMensura.style.display = "none";
-  formularioMensura.style.display = "inline-block";
-  formularioValuaciones.style.display = "inline-block";
-  cerrar.style.display = "none";
 }
