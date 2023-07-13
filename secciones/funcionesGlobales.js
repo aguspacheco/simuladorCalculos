@@ -1,9 +1,8 @@
 import {
-  borrarBtnMensura,
   porcentajePreferencial,
   tablaMensura,
-  formularioMensura,
-  formularioValuaciones,
+  calculosMensura,
+  calculosValuaciones,
 } from "./constantes.js";
 
 /**
@@ -60,9 +59,6 @@ export function agregarFilaPreferencial(etiqueta, preferencial, monto, tabla) {
 export function cerrarVentana() {
   var ventanaEmergente = document.getElementById("popUpMensura");
   ventanaEmergente.style.display = "none";
-  resultadosMensura.innerHTML = "";
-  tablaMensura.innerHTML = "";
-  formularioMensura.style.display = "flex";
-  borrarBtnMensura.style.display = "inline-block";
-  formularioValuaciones.style.display = "block";
+  calculosMensura.style.display = "block";
+  calculosValuaciones.style.display = "block";
 }
