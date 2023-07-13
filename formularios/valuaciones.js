@@ -2,10 +2,7 @@ import {
   abrirPopUp,
   mostrarTotalValuaciones,
 } from "../secciones/funcionesValuaciones.js";
-import {
-  calcularValuaciones,
-  borrarValuaciones,
-} from "../secciones/botones.js";
+import { calcular, borrarValuaciones } from "../secciones/botones.js";
 import { cerrarVentana } from "../secciones/funcionesGlobales.js";
 
 const calcularBtnValuaciones = document.getElementById(
@@ -13,7 +10,7 @@ const calcularBtnValuaciones = document.getElementById(
 );
 calcularBtnValuaciones.addEventListener("click", () => {
   abrirPopUp();
-  calcularValuaciones();
+  calcular();
   mostrarTotalValuaciones();
 });
 

@@ -14,7 +14,10 @@ export const calculosValuaciones = document.getElementById(
 );
 export const tablaValuaciones = document.getElementById("tablaValuaciones");
 export const tablaMensura = document.getElementById("tablaMensura");
-
+export const resultadosMensura = document.getElementById("resultadosMensura");
+export const resultadosValuaciones = document.getElementById(
+  "resultadosValuaciones"
+);
 /**
  * CONSTANTES MENSURA
  */

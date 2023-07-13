@@ -1,24 +1,15 @@
-html {
+body {
   color: black;
-  overflow: hidden;
   overflow-y: scroll;
-  justify-content: center;
   position: absolute;
-}
-
-.formularioMensura {
   display: flex;
-  flex-direction: column;
-  padding: 5px;
-  border-radius: 5px;
-  margin-bottom: 5px;
 }
 
+.formularioMensura,
 .formularioValuaciones {
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px;
+  border-radius: 5px;
   margin-bottom: 5px;
 }
 
@@ -38,8 +29,8 @@ caption {
   margin-bottom: 10px;
   border-radius: 3px;
   font-size: 15px;
-  justify-content: center;
   display: flex;
+  justify-content: center;
   width: 100%;
   background: none;
   border: none;
@@ -58,6 +49,7 @@ fieldset {
   border-radius: 15px;
   width: 70%;
   padding: 5%;
+  margin-top: 20px;
 }
 
 legend {
@@ -70,7 +62,6 @@ legend {
 
 table {
   background-color: white;
-  text-align: center;
   border-collapse: collapse;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -91,7 +82,6 @@ tr:hover {
 }
 
 td {
-  text-align: start;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
@@ -119,17 +109,13 @@ button :active {
   box-shadow: inset 0.2rem 0.2rem 1rem #fff, inset -0.2rem 1rem #ccc;
 }
 
-.botonesValuaciones {
-  margin-top: 10px;
-  margin-right: 50px;
-  display: flex;
-}
-
+.botonesValuaciones,
 .botonesMensura {
   margin-top: 10px;
   margin-right: 50px;
   display: flex;
 }
+
 .calcular-btn {
   background-color: #0f4d75;
 }
@@ -154,8 +140,4 @@ button :active {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-#tablaValuaciones {
-  display: none;
 }

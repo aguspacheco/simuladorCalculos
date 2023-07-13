@@ -1,8 +1,9 @@
 import {
   porcentajePreferencial,
-  tablaMensura,
   calculosMensura,
   calculosValuaciones,
+  resultadosMensura,
+  resultadosValuaciones,
 } from "./constantes.js";
 
 /**
@@ -58,7 +59,24 @@ export function agregarFilaPreferencial(etiqueta, preferencial, monto, tabla) {
 
 export function cerrarVentana() {
   var ventanaEmergente = document.getElementById("popUpMensura");
+  var ventana = document.getElementById("popUpValuaciones");
   ventanaEmergente.style.display = "none";
+  ventana.style.display = "none";
+  resultadosMensura.innerHTML = "";
+  resultadosValuaciones.innerHTML = "";
   calculosMensura.style.display = "block";
   calculosValuaciones.style.display = "block";
+}
+
+export function obtenerDatosFormulario(formularioId) {
+  var formulario = document.getElementById(formularioId);
+  var inputs = formulario.getElementsByTagName("input");
+  var datos = [];
+
+  for (var i = 0; i < inputs.length; i++) {
+    var input = inputs[i];
+    var valores = input.type === "checkbox" ? input.checked : +input.value;
+    datos.push(valores);
+  }
+  return datos;
 }

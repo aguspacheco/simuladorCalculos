@@ -8,9 +8,10 @@ import {
   agregarFila,
   agregarFilaPreferencial,
   verTotal,
+  obtenerDatosFormulario,
 } from "./funcionesGlobales.js";
 export function mostrarTotalMensura() {
-  const datosEntrada = recibirDatosEntrada();
+  const datosEntrada = obtenerDatosFormulario("formularioMensura");
   const total = calcularTotal(datosEntrada);
   creaTablaResultados(datosEntrada);
   verTotal(total, "abonarMensura");
@@ -30,56 +31,25 @@ function parcelasValorModular(parcelas) {
 }
 
 /**
- * RECIBE LOS VALORES DE ENTRADA QUE SON INGRESADOS POR EL USUARIO EN EL FORMULARIO.
- * @returns {Object} -Un objeto con los valores que ingreso el usuario en el formulario.
- */
-export function recibirDatosEntrada() {
-  const origen = parseInt(document.getElementById("origen").value) || 0;
-  const resultante = parseInt(document.getElementById("resultante").value) || 0;
-  const ddjj = parseInt(document.getElementById("ddjj").value) || 0;
-  const estudio = parseInt(document.getElementById("estudio").value) || 0;
-  const funcional = parseInt(document.getElementById("ufuncional").value) || 0;
-  const cementerio = parseInt(document.getElementById("cementerio").value) || 0;
-  const estadoParcelario =
-    parseInt(document.getElementById("estadoParcelario").value) || 0;
-  const preferencial = document.getElementById("preferencialMensura").checked;
-  const parcelas = origen + resultante;
-  return {
-    origen,
-    resultante,
-    ddjj,
-    estudio,
-    funcional,
-    cementerio,
-    estadoParcelario,
-    preferencial,
-    parcelas,
-  };
-}
-
-/**
  * Calcula el total que debe pagar segun los valores que el usuario ingreso.
  * @param {Object} datosEntrada - Es un objeto con los valores ingreso por el usuario.
  * @returns {Number} - El total a pagar segun los valores ingresados por el usuario.
  */
-function calcularTotal({
-  parcelas,
-  ddjj,
-  preferencial,
-  funcional,
-  cementerio,
-  estudio,
-  estadoParcelario,
-}) {
+function calcularTotal(entrada) {
   // Calcular el total inicial sumando los valores de los módulos multiplicados por la cantidad.
   let total =
-    ddjj * valoresMensura[0] +
-    funcional * valoresMensura[1] +
-    cementerio * valoresMensura[2] +
-    estadoParcelario * valoresMensura[3] +
-    estudio * valoresMensura[4];
+    entrada[3] * valoresMensura[0] +
+    entrada[2] * valoresMensura[1] +
+    entrada[6] * valoresMensura[2] +
+    entrada[4] * valoresMensura[3] +
+    entrada[5] * valoresMensura[4];
   total +=
-    cementerio * valoresMensura[3] * parcelas * funcional * valoresMensura[1];
+    entrada[6] *
+    entrada[3] *
+    entrada[0] *
+    entrada[1] *
+    entrada[2] *
+    valoresMensura[1];
   // Si hay parcelas agregar el valor modular de las parcelas multiplicado por la cantidad de parcelas
   if (parcelas != 0) total += parcelasValorModular(parcelas) * parcelas;
   // Si es preferencial agregar el porcentaje preferencial al total
