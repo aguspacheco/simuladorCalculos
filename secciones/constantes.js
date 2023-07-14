@@ -53,6 +53,7 @@ export const valoresMensura = [
   precioCementerio,
   precioParcelario,
   precioEstudio,
+  porcentajePreferencial,
 ];
 
 export const valoresValuaciones = [
@@ -61,4 +62,5 @@ export const valoresValuaciones = [
   precioValuacionFiscal,
   precioReceptividadGanadera,
   precioVir,
+  porcentajePreferencial,
 ];
