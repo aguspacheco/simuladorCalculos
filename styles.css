@@ -1,5 +1,5 @@
 body {
-  color: black;
+  color: #0000008e;
   overflow-y: scroll;
   position: absolute;
   display: flex;
@@ -50,6 +50,7 @@ fieldset {
   width: 70%;
   padding: 5%;
   margin-top: 20px;
+  box-shadow: 0 0 20px 1px #0000004d;
 }
 
 legend {
@@ -64,6 +65,7 @@ table {
   background-color: white;
   border-collapse: collapse;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 20px 1px #0000004d;
 }
 
 thead {
@@ -84,7 +86,6 @@ tr:hover {
 td {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  text-align: center;
 }
 
 .btn {
