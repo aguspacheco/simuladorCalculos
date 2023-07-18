@@ -47,7 +47,6 @@ function calcularTotal(entrada) {
     entrada[2] *
     valoresMensura[1];
   const parcelas = entrada[0] + entrada[1];
-
   // Si hay parcelas agregar el valor modular de las parcelas multiplicado por la cantidad de parcelas
   if (parcelas != 0) total += parcelasValorModular(parcelas) * parcelas;
   // Si es preferencial agregar el porcentaje preferencial al total
@@ -83,6 +82,8 @@ function creaTablaResultados(entrada) {
   const datosMensura = valoresMensura.slice();
   datosMensura.unshift(valorParcelas, valorParcelas);
 
+  console.log(datosMensura);
+
   agregarFila("Parcelas origen", entrada[0], datosMensura, resultadosMensura);
 
   agregarFila(
@@ -103,7 +104,7 @@ function creaTablaResultados(entrada) {
 
   agregarFila(
     "Estudio de titulo y antecedente dominal",
-    entrada[4],
+    entrada[5],
     datosMensura,
     resultadosMensura
   );
@@ -117,7 +118,7 @@ function creaTablaResultados(entrada) {
 
   agregarFila(
     "Declaraciones juradas",
-    entrada[6],
+    entrada[3],
     datosMensura,
     resultadosMensura
   );
@@ -126,7 +127,7 @@ function creaTablaResultados(entrada) {
 
   agregarFilaPreferencial(
     "Preferencial",
-    entrada,
+    entrada[7],
     precioPreferencial,
     resultadosMensura
   );
