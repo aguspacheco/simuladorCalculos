@@ -76,7 +76,7 @@ thead {
 }
 
 tr:nth-child(even) {
-  background-color: #ddd;
+  background-color: #dddddde7;
 }
 
 tr:hover {
@@ -86,11 +86,11 @@ tr:hover {
 td {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+  text-align: center;
 }
 
 .btn {
   padding: 1rem 1.5rem;
-  margin-left: 25px;
   font-size: 12px;
   font-weight: semibold;
   cursor: pointer;
@@ -98,7 +98,7 @@ td {
   background-color: transparent;
   border: 2px solid #eee;
   border-radius: 0.5rem;
-  color: #ffff;
+  color: #ffffffe1;
   margin-bottom: 1px;
 }
 
@@ -116,6 +116,7 @@ button :active {
   margin-top: 10px;
   margin-right: 50px;
   display: flex;
+  justify-content: space-around;
 }
 
 .calcular-btn {
@@ -124,6 +125,13 @@ button :active {
 
 .borrar-btn {
   background-color: #ff6666;
+}
+
+.cerrar {
+  background-color: #ffc65c;
+  color: #00000096;
+  margin-left: 450px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .popUp {

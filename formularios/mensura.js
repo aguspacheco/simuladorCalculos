@@ -1,13 +1,10 @@
-import {
-  abrirVentanaMensura,
-  mostrarTotalMensura,
-} from "../secciones/funcionesMensura.js";
+import { mostrarTotalMensura } from "../secciones/funcionesMensura.js";
 import { calcular, borrarMensura } from "../secciones/botones.js";
-import { cerrarVentana } from "../secciones/funcionesGlobales.js";
+import { abrirPopUp, cerrarVentana } from "../secciones/funcionesGlobales.js";
 
 const calcularBtnMensura = document.getElementById("calcular-btn");
 calcularBtnMensura.addEventListener("click", () => {
-  abrirVentanaMensura();
+  abrirPopUp("Mensura");
   calcular();
   mostrarTotalMensura();
 });

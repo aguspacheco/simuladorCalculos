@@ -127,8 +127,3 @@ function TablaValuaciones(valoresEntrada) {
     resultadosValuaciones
   );
 }
-
-export function abrirPopUp() {
-  var ventana = document.getElementById("popUpValuaciones");
-  ventana.style.display = "block";
-}

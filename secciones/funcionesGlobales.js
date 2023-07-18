@@ -56,7 +56,9 @@ export function agregarFilaPreferencial(etiqueta, preferencial, monto, tabla) {
       `;
   tabla.appendChild(fila);
 }
-
+/**
+ * Cierra la ventana emergente y esconde la tabla.
+ */
 export function cerrarVentana() {
   var ventanaEmergente = document.getElementById("popUpMensura");
   var ventana = document.getElementById("popUpValuaciones");
@@ -80,3 +82,16 @@ export function obtenerDatosFormulario(formularioId) {
   }
   return datos;
 }
+
+/**
+ * Abre la ventana emergente de la mensura.
+ */
+export function abrirPopUp(tipo) {
+  var ventanaEmergente = document.getElementById(`popUp${tipo}`);
+  ventanaEmergente.style.display = "block";
+}
+
+export function mostrarTotal(clase) {
+  
+} 
+
