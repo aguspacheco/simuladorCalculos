@@ -1,128 +1,60 @@
-import { porcentajePreferencial, valoresValuaciones } from "./constantes.js";
-import {
-  agregarFila,
-  agregarFilaPreferencial,
-  verTotal,
-} from "./funcionesGlobales.js";
+import { valoresValuaciones } from "./constantes.js";
+import { agregarFila, agregarFilaPreferencial } from "./funcionesGlobales.js";
 
-export function mostrarTotalValuaciones() {
-  const datosIniciales = tomarValoresEntrada();
-  const total = calcularValuaciones(datosIniciales);
-  TablaValuaciones(datosIniciales);
-  verTotal(total, "abonarValuaciones");
-}
-
-export function tomarValoresEntrada() {
-  const ddjj =
-    parseInt(document.getElementById("declaracionesJuradas").value) || 0;
-  const valoresFiscales =
-    parseInt(document.getElementById("valoresFiscales").value) || 0;
-  const valuacionFiscal =
-    parseInt(document.getElementById("valuacionFiscal").value) || 0;
-  const ganadera = parseInt(document.getElementById("ganadera").value) || 0;
-  const vir = parseInt(document.getElementById("vir").value) || 0;
-  const preferencial = document.getElementById(
-    "preferencialValuaciones"
-  ).checked;
-
-  return {
-    ddjj,
-    valoresFiscales,
-    valuacionFiscal,
-    ganadera,
-    vir,
-    preferencial,
-  };
-}
-
-function calcularValuaciones({
-  ddjj,
-  valoresFiscales,
-  valuacionFiscal,
-  ganadera,
-  vir,
-}) {
+function totalPreferencialValuaciones(entrada) {
   let total =
-    ddjj * valoresValuaciones[0] +
-    valoresFiscales * valoresValuaciones[1] +
-    valuacionFiscal * valoresValuaciones[2] +
-    ganadera * valoresValuaciones[3] +
-    vir * valoresValuaciones[4];
+    entrada[0] * valoresValuaciones[0] +
+    entrada[1] * valoresValuaciones[1] +
+    entrada[2] * valoresValuaciones[2] +
+    entrada[3] * valoresValuaciones[3] +
+    entrada[4] * valoresValuaciones[4];
 
-  if (PreferencialValuaciones) total *= 1 + porcentajePreferencial / 100;
-
-  return total;
+  return (total * valoresValuaciones[5]) / 100;
 }
 
-function PreferencialValuaciones({
-  ddjj,
-  valoresFiscales,
-  valuacionFiscal,
-  ganadera,
-  vir,
-}) {
-  let total =
-    ddjj * valoresValuaciones[0] +
-    valoresFiscales * valoresValuaciones[1] +
-    valuacionFiscal * valoresValuaciones[2] +
-    ganadera * valoresValuaciones[3] +
-    vir * valoresValuaciones[4];
-
-  return (total * porcentajePreferencial) / 100;
-}
-
-function TablaValuaciones(valoresEntrada) {
-  const {
-    ddjj,
-    valoresFiscales,
-    valuacionFiscal,
-    ganadera,
-    vir,
-    preferencial,
-  } = valoresEntrada;
-
+export function crearTablaValuaciones(entrada) {
   agregarFila(
     "Declaraciones juradas",
-    ddjj,
+    entrada[0],
     valoresValuaciones[0],
     resultadosValuaciones
   );
 
   agregarFila(
     "Valores fiscales",
-    valoresFiscales,
+    entrada[1],
     valoresValuaciones[1],
     resultadosValuaciones
   );
 
   agregarFila(
     "Valuación fiscal",
-    valuacionFiscal,
+    entrada[2],
     valoresValuaciones[2],
     resultadosValuaciones
   );
 
   agregarFila(
     "Receptividad ganadera",
-    ganadera,
+    entrada[3],
     valoresValuaciones[3],
     resultadosValuaciones
   );
 
   agregarFila(
     "Reconsidereación de vir",
-    vir,
+    entrada[4],
     valoresValuaciones[4],
     resultadosValuaciones
   );
 
-  const precioPreferencialValuaciones = preferencial
-    ? PreferencialValuaciones(valoresEntrada)
+  const precioPreferencialValuaciones = entrada[5]
+    ? totalPreferencialValuaciones(entrada)
     : 0;
 
   agregarFilaPreferencial(
     "Preferencial",
-    preferencial,
+    entrada[5],
     precioPreferencialValuaciones,
     resultadosValuaciones
   );

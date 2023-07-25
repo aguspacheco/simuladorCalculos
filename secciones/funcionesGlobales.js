@@ -1,10 +1,11 @@
 import {
   porcentajePreferencial,
-  calculosMensura,
-  calculosValuaciones,
   resultadosMensura,
   resultadosValuaciones,
 } from "./constantes.js";
+
+import { crearTablaMensura } from "./funcionesMensura.js";
+import { crearTablaValuaciones } from "./funcionesValuaciones.js";
 
 /**
  * CAMBIA EL VALOR DE UNA CADENA CON EL FORMATO PESO ARGENTINO.
@@ -59,16 +60,6 @@ export function agregarFilaPreferencial(etiqueta, preferencial, monto, tabla) {
 /**
  * Cierra la ventana emergente y esconde la tabla.
  */
-export function cerrarVentana() {
-  var ventanaEmergente = document.getElementById("popUpMensura");
-  var ventana = document.getElementById("popUpValuaciones");
-  ventanaEmergente.style.display = "none";
-  ventana.style.display = "none";
-  resultadosMensura.innerHTML = "";
-  resultadosValuaciones.innerHTML = "";
-  calculosMensura.style.display = "block";
-  calculosValuaciones.style.display = "block";
-}
 
 export function obtenerDatosFormulario(formularioId) {
   var formulario = document.getElementById(formularioId);
@@ -90,8 +81,18 @@ export function abrirPopUp(tipo) {
   var ventanaEmergente = document.getElementById(`popUp${tipo}`);
   ventanaEmergente.style.display = "block";
 }
+export function cerrarPopUp(tipo) {
+  var ventana = document.getElementById(`popUp${tipo}`);
+  ventana.style.display = "none";
+  resultadosMensura.innerHTML = "";
+  resultadosValuaciones.innerHTML = "";
+  calculosMensura.style.display = "block";
+  calculosValuaciones.style.display = "block";
+}
 
 export function mostrarTotal(clase) {
-  
-} 
-
+  var datosEntrada = obtenerDatosFormulario(`formulario${clase}`);
+  crearTablaMensura(datosEntrada);
+  crearTablaValuaciones(datosEntrada);
+  verTotal(0, `abonar${clase}`);
+}

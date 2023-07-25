@@ -47,7 +47,7 @@ input[type="checkbox"] {
 fieldset {
   border: 3px solid #95a6a7;
   border-radius: 15px;
-  width: 70%;
+  width: 50%;
   padding: 5%;
   margin-top: 20px;
   box-shadow: 0 0 20px 1px #0000004d;
@@ -114,9 +114,7 @@ button :active {
 .botonesValuaciones,
 .botonesMensura {
   margin-top: 10px;
-  margin-right: 50px;
-  display: flex;
-  justify-content: space-around;
+  margin-left: 15px;
 }
 
 .calcular-btn {
@@ -127,7 +125,8 @@ button :active {
   background-color: #ff6666;
 }
 
-.cerrar {
+.cerrar,
+.cerrarValuaciones {
   background-color: #ffc65c;
   color: #00000096;
   margin-left: 450px;

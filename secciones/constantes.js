@@ -7,11 +7,6 @@ export const porcentajePreferencial = 500; //Porcentaje preferencial.
 /**
  * CONSTANTES PARA LOS BOTONES Y FORMUALRIOS.
  */
-
-export const calculosMensura = document.getElementById("calculosMensura");
-export const calculosValuaciones = document.getElementById(
-  "calculosValuaciones"
-);
 export const tablaValuaciones = document.getElementById("tablaValuaciones");
 export const tablaMensura = document.getElementById("tablaMensura");
 export const resultadosMensura = document.getElementById("resultadosMensura");
