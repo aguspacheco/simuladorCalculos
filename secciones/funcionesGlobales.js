@@ -5,7 +5,7 @@ import {
 } from "./constantes.js";
 
 import { crearTablaMensura } from "./funcionesMensura.js";
-import { crearTablaValuaciones } from "./funcionesValuaciones.js";
+// import { crearTablaValuaciones } from "./funcionesValuaciones.js";
 
 /**
  * CAMBIA EL VALOR DE UNA CADENA CON EL FORMATO PESO ARGENTINO.
@@ -21,28 +21,18 @@ export function formatoPesoArgentino(monto) {
 }
 
 /**
- * Se ve el total que tiene que pagar el usuario en la pagina.
- * @param {Number} total - El total que se tiene que pagar.
- * @param {Number} abonar - El contenedor del total.
- */
-export function verTotal(total, abonar) {
-  const contenedor = document.getElementById(abonar);
-  contenedor.textContent = formatoPesoArgentino(total);
-}
-
-/**
  * Agrega una fila a la tabla de resultados con la informacion de datos ingresados, cantidad, valor modular, y valor total.
  * @param {string} etiqueta - La etiqueta de la fila.
  * @param {number} cantidad  - La cantidad que se ingreso en el formulario.
  * @param {number} valorModular - El valor modular de cada elemento que hay en la fila.
  */
-export function agregarFila(etiqueta, cantidad, valorModular, tabla) {
+export function agregarFila(etiqueta, cantidad, valorModular, total, tabla) {
   const fila = document.createElement("tr");
   fila.innerHTML = `
           <th class = "texto-izquierda">${etiqueta}</th> 
           <td>${cantidad}</td>
           <td>${formatoPesoArgentino(valorModular)}</td>
-          <td>${formatoPesoArgentino(valorModular * cantidad)}</td>
+          <td>${formatoPesoArgentino(total)}</td>
           `;
   tabla.appendChild(fila);
 }
@@ -92,7 +82,5 @@ export function cerrarPopUp(tipo) {
 
 export function mostrarTotal(clase) {
   var datosEntrada = obtenerDatosFormulario(`formulario${clase}`);
-  crearTablaMensura(datosEntrada);
-  crearTablaValuaciones(datosEntrada);
-  verTotal(0, `abonar${clase}`);
+  crearTablaMensura(clase, datosEntrada);
 }

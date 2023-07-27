@@ -1,5 +1,5 @@
 import { valoresMensura, modulos, resultadosMensura } from "./constantes.js";
-import { agregarFila, agregarFilaPreferencial } from "./funcionesGlobales.js";
+import { agregarFila, formatoPesoArgentino } from "./funcionesGlobales.js";
 
 /**
  * DEVUELVE EL VALOR MODULAR QUE CORRESPONDE A LA CANTIDAD DE PARCELAS INGRESADAS.
@@ -36,62 +36,34 @@ function totalPreferencialMensura(entrada) {
  * Crea una tabla de resultados con los datos de entrada y los valores de mensura.
  * @param {Array} entrada - Los datos de entrada.
  */
-export function crearTablaMensura(entrada) {
+export function crearTablaMensura(clase, entrada) {
   const parcela = entrada[0] + entrada[1];
   const valorParcelas = parcelasValorModular(parcela);
   const datosMensura = valoresMensura.slice();
   datosMensura.unshift(valorParcelas, valorParcelas);
 
-  agregarFila(
+  const titulos = [
     "Parcelas origen",
-    entrada[0],
-    datosMensura[0],
-    resultadosMensura
-  );
-
-  agregarFila(
     "Parcelas resultantes",
-    entrada[1],
-    datosMensura[1],
-    resultadosMensura
-  );
-
-  agregarFila(
     "Declaraciones juradas",
-    entrada[2],
-    datosMensura[2],
-    resultadosMensura
-  );
-
-  agregarFila(
     "Unidades funcionales",
-    entrada[3],
-    datosMensura[3],
-    resultadosMensura
-  );
-
-  agregarFila("Cementerio", entrada[4], datosMensura[4], resultadosMensura);
-
-  agregarFila(
+    "Cementerio",
     "Estudio de titulo y antecedente dominal",
-    entrada[5],
-    datosMensura[5],
-    resultadosMensura
-  );
-
-  agregarFila(
-    "Verificación estado parcelario",
-    entrada[6],
-    datosMensura[6],
-    resultadosMensura
-  );
-
-  const precioPreferencial = entrada[7] ? totalPreferencialMensura(entrada) : 0;
-
-  agregarFilaPreferencial(
+    "Verificacion estado parcelario",
     "Preferencial",
-    entrada[7],
-    precioPreferencial,
-    resultadosMensura
-  );
+  ];
+
+  const elementosMensura = entrada.concat(datosMensura);
+  let sumaTotal = 0;
+
+  titulos.forEach((titulo, index) => {
+    const valorModular = datosMensura[index];
+    const cantidad = elementosMensura[index];
+    let total = valorModular * cantidad;
+    agregarFila(titulo, cantidad, valorModular, total, resultadosMensura);
+
+    sumaTotal += total;
+  });
+  const contenedor = document.getElementById(`abonar${clase}`);
+  contenedor.textContent = formatoPesoArgentino(sumaTotal);
 }

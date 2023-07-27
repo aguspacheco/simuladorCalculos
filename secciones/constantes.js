@@ -15,7 +15,7 @@ export const resultadosValuaciones = document.getElementById(
 );
 /**
  * CONSTANTES MENSURA
- */
+ */ 
 export const modulos = [
   { rango: [0, 5], valor: 750 * multiplicador },
   { rango: [6, 20], valor: 625 * multiplicador },
