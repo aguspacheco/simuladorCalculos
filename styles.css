@@ -61,11 +61,16 @@ legend {
   color: white;
 }
 
+::selection {
+  background-color: #b3d1c8;
+}
+
 table {
   background-color: white;
   border-collapse: collapse;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   box-shadow: 0 0 20px 1px #0000004d;
+  width: 110%;
 }
 
 thead {
@@ -92,7 +97,6 @@ td {
 .btn {
   padding: 1rem 1.5rem;
   font-size: 12px;
-  font-weight: semibold;
   cursor: pointer;
   transition: all 1s ease;
   background-color: transparent;

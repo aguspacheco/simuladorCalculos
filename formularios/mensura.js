@@ -1,4 +1,4 @@
-import { calcular, borrarMensura } from "../secciones/botones.js";
+import { calcular, borrar } from "../secciones/botones.js";
 import {
   abrirPopUp,
   cerrarPopUp,
@@ -19,5 +19,5 @@ cerrar.addEventListener("click", () => {
 
 const borrarBtnMensura = document.getElementById("borrar-btn");
 borrarBtnMensura.addEventListener("click", () => {
-  borrarMensura();
+  borrar("Mensura");
 });

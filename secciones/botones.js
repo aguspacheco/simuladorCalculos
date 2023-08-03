@@ -1,5 +1,5 @@
 /**
- * Calcula los resultados en la tabla y esconde el formulario y muestra el boton de borrar y volver.
+ * Calcula los resultados en la tabla y esconde el formulario y muestra el botón de borrar y volver.
  */
 export function calcular() {
   document.getElementById("calculosMensura").style.display = "none";
@@ -7,36 +7,10 @@ export function calcular() {
 }
 
 /**
- * Borra los datos del formulario.
+ * Borra los datos de un formulario.
+ * @param {string} formulario - El ID del formulario que se quiere borrar.
  */
-export function borrarMensura() {
-  const datos = [
-    "origen",
-    "resultante",
-    "ufuncional",
-    "ddjj",
-    "estadoParcelario",
-    "estudio",
-    "cementerio",
-    "preferencialMensura",
-  ];
-  datos.forEach((datos) => {
-    document.getElementById(datos).value = "";
-    document.getElementById("preferencialMensura").checked = false;
-  });
-}
-
-export function borrarValuaciones() {
-  const elementos = [
-    "declaracionesJuradas",
-    "valoresFiscales",
-    "valuacionFiscal",
-    "ganadera",
-    "vir",
-    "preferencialValuaciones",
-  ];
-  elementos.forEach((elementos) => {
-    document.getElementById(elementos).value = "";
-    document.getElementById("preferencialValuaciones").checked = false;
-  });
+export function borrar(clase) {
+  const formulario = document.getElementById(`formulario${clase}`);
+  formulario.reset();
 }
