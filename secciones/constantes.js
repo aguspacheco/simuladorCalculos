@@ -27,29 +27,20 @@ export const modulos = [
 /**
  * Un objeto que mapea los nombres de los valores modulares a sus valores.
  */
-const precios = {
-  unidadFuncional: 500, //1.2 Valor modular unidad funcional.
-  ddjj: 200, // Valor modular ddjj.
-  cementerio: 100, //1.4 Valor modular cementerio.
-  parcelario: 1500, //1.8 Valor modular estado parcelario.
-  valoresFiscal: 600, //3.3 Valor modular valores fiscales.
-  estudio: 700, //1.8.1 Valor modular estudio de parcela.
-  valuacionFiscal: 500, //3.4 Valor modular valuacion fiscal.
-  receptividadGanadera: 500, //3.5 Valor modular receptividad ganadera.
-  vir: 700, //3.6 Valor modular vir.
-};
-
-/**
- *  Una matriz de valores modulares para mensura y los valores se calculan multiplicando el valor de cada valor modular por el índice.
- */
 export const valoresMensura = [
-  precios.ddjj,
-  precios.unidadFuncional,
-  precios.cementerio,
-  precios.parcelario,
-  precios.estudio,
-  porcentajePreferencial,
-].map((valor) => valor * multiplicador);
+  { valor: 500 }, //1.2 Valor modular unidad funcional.
+  { valor: 200 }, // Valor modular ddjj.
+  { valor: 100 }, //1.4 Valor modular cementerio.
+  { valor: 1500 }, //1.8 Valor modular estado parcelario.
+  { valor: 600 }, //3.3 Valor modular valores fiscales.
+  { valor: 700 }, //1.8.1 Valor modular estudio de parcela.
+  { valor: 500 }, //3.4 Valor modular valuacion fiscal.
+  { valor: 500 }, //3.5 Valor modular receptividad ganadera.
+  { valor: 700 }, //3.6 Valor modular vir.
+  { porcentaje: porcentajePreferencial }, //Porcentaje preferencial.
+].map((monto) =>
+  monto.valor ? { ...monto, valor: monto.valor * multiplicador } : monto
+);
 
 /**
  * Una matriz de valores modulares para valuaciones y los valores se calculan multiplicando el valor de cada valor modular modular por el indice.
@@ -62,3 +53,29 @@ export const valoresValuaciones = [
   precios.vir,
   porcentajePreferencial,
 ].map((valor) => valor * multiplicador);
+
+/**
+ * Arreglo de los titulos de valuaciones.
+ */
+export const titulosValuaciones = [
+  "Declaraciónes juradas",
+  "Certificación de valores fiscales de inmuebles",
+  "Reconsideración de valuación fiscal",
+  "Reconsideración de receptividad ganadera",
+  "Reconsideración de VIR",
+  "Preferencial",
+];
+
+/**
+ * Arrglo de los titulos de mensura.
+ */
+export const titulosMensura = [
+  "Parcelas origen",
+  "Parcelas resultantes",
+  "Unidades funcionales",
+  "Declaraciones juradas",
+  "Cementerio",
+  "Estado parcelario",
+  "Estudio de titulo y antecedentes",
+  "Preferencial",
+];
