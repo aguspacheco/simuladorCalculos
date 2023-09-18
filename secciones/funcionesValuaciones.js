@@ -1,9 +1,13 @@
 import {
   resultadosValuaciones,
   valoresValuaciones,
-  titulosValuaciones,
+  titulosValuaciones as titulo,
 } from "./constantes.js";
-import { agregarFila, formatoPesoArgentino } from "./funcionesGlobales.js";
+import {
+  agregarFila,
+  formatoPesoArgentino,
+  calcularTotal,
+} from "./funcionesGlobales.js";
 
 export function crearTablaValuaciones(clase, entrada) {
   const datosValuaciones = valoresValuaciones.slice();
@@ -11,12 +15,22 @@ export function crearTablaValuaciones(clase, entrada) {
   const elementosValuaciones = entrada.concat(datosValuaciones);
   let suma = 0;
 
-  titulosValuaciones.forEach((titulo, index) => {
-    const valorModular = datosValuaciones[index];
+  titulo.forEach((titulo, index) => {
     const cantidad = elementosValuaciones[index];
-    let total = valorModular * cantidad;
-    agregarFila(titulo, cantidad, valorModular, total, resultadosValuaciones);
-    suma += total;
+    let totalValuaciones = calcularTotal(
+      index,
+      cantidad,
+      suma,
+      valoresValuaciones
+    );
+    agregarFila(
+      titulo,
+      cantidad,
+      valoresValuaciones[index].valor || valoresValuaciones[index].porcentaje,
+      totalValuaciones,
+      resultadosValuaciones
+    );
+    suma += totalValuaciones;
   });
 
   const contenedor = document.getElementById(`abonar${clase}`);

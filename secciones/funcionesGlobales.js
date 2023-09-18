@@ -74,6 +74,20 @@ export function cerrarPopUp(tipo) {
   calculosValuaciones.style.display = "block";
 }
 
+export function calcularTotal(index, cantidad, suma, valores) {
+  let total = 0;
+
+  if (valores[index].valor) {
+    total = valores[index].valor * cantidad;
+  }
+
+  if (valores[index].porcentaje) {
+    total = cantidad ? suma * (valores[index].porcentaje / 100) : 0;
+  }
+
+  return total;
+}
+
 /**
  * Muestra los resultados totales en la tabla.
  * @param {string} clase - La clase para la cual se calcula y se muestran los resultados.
@@ -89,6 +103,9 @@ export function mostrarTotal(clase) {
     datosEntrada.push(valores);
   }
 
-  crearTablaMensura(clase, datosEntrada);
-  crearTablaValuaciones(clase, datosEntrada);
+  if (clase === "Mensura") {
+    crearTablaMensura(clase, datosEntrada);
+  } else {
+    crearTablaValuaciones(clase, datosEntrada);
+  }
 }

@@ -25,34 +25,33 @@ export const modulos = [
 ].map((modulo) => ({ ...modulo, valor: modulo.valor * multiplicador }));
 
 /**
- * Un objeto que mapea los nombres de los valores modulares a sus valores.
+ * Un objeto que mapea los valores modulares a sus valores, multiplancado cada uno por 2,5.
  */
 export const valoresMensura = [
   { valor: 500 }, //1.2 Valor modular unidad funcional.
   { valor: 200 }, // Valor modular ddjj.
   { valor: 100 }, //1.4 Valor modular cementerio.
   { valor: 1500 }, //1.8 Valor modular estado parcelario.
-  { valor: 600 }, //3.3 Valor modular valores fiscales.
   { valor: 700 }, //1.8.1 Valor modular estudio de parcela.
-  { valor: 500 }, //3.4 Valor modular valuacion fiscal.
-  { valor: 500 }, //3.5 Valor modular receptividad ganadera.
-  { valor: 700 }, //3.6 Valor modular vir.
-  { porcentaje: porcentajePreferencial }, //Porcentaje preferencial.
+  { porcentaje: porcentajePreferencial }, //Porcentaje preferencial
 ].map((monto) =>
   monto.valor ? { ...monto, valor: monto.valor * multiplicador } : monto
 );
 
 /**
- * Una matriz de valores modulares para valuaciones y los valores se calculan multiplicando el valor de cada valor modular modular por el indice.
+ * Un objeto que mapea los modulares a sus valores, multiplancado cada uno por 2,5.
  */
+
 export const valoresValuaciones = [
-  precios.ddjj,
-  precios.valoresFiscal,
-  precios.valuacionFiscal,
-  precios.receptividadGanadera,
-  precios.vir,
-  porcentajePreferencial,
-].map((valor) => valor * multiplicador);
+  { valor: 200 }, //3.2 valor declaraciones juradas.
+  { valor: 600 }, //3.3 certificacion de valores fiscales.
+  { valor: 500 }, //3.4 reconsideracion de valuacion fiscal.
+  { valor: 500 }, //3.5 reconsideracion de receptividad ganadera.
+  { valor: 700 }, //3.6 reconsideracion VIR.
+  { porcentaje: porcentajePreferencial }, //Porcentaje preferencial.
+].map((monto) =>
+  monto.valor ? { ...monto, valor: monto.valor * multiplicador } : monto
+);
 
 /**
  * Arreglo de los titulos de valuaciones.

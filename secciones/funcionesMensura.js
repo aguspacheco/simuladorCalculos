@@ -2,37 +2,56 @@ import {
   valoresMensura,
   modulos,
   resultadosMensura,
-  titulosMensura,
+  titulosMensura as titulo,
 } from "./constantes.js";
 import {
   agregarFila,
-  agregarFilaPreferencial,
   formatoPesoArgentino,
+  calcularTotal,
 } from "./funcionesGlobales.js";
 
-function parcelasValorModular(parcelas) {
-  const moduloUbicado = modulos.find((modulo) => {
+function getModuloUbicado(parcelas) {
+  return modulos.find((modulo) => {
     const [min, max] = modulo.rango;
     return parcelas >= min && parcelas <= max;
   });
+}
+
+function calcularValorParcelas(parcelas) {
+  const moduloUbicado = getModuloUbicado(parcelas);
   return moduloUbicado ? moduloUbicado.valor : 0;
 }
+
 export function crearTablaMensura(clase, entrada) {
   const parcelas = entrada[0] + entrada[1];
-  const valorParcelas = parcelasValorModular(parcelas);
-  const datosMensura = [valorParcelas, valorParcelas, ...valoresMensura];
+  const valorParcelas = calcularValorParcelas(parcelas);
+
+  const valor = { valor: valorParcelas };
+  valoresMensura.unshift(valor, valor);
 
   let sumaTotal = 0;
 
-  titulosMensura.forEach((titulo, index) => {
-    const valorModular = datosMensura[index];
+  titulo.forEach((titulo, index) => {
     const cantidad = entrada[index];
+    let totalMensura = calcularTotal(
+      index,
+      cantidad,
+      sumaTotal,
+      valoresMensura
+    );
 
-    let total = valorModular * cantidad;
-    agregarFila(titulo, cantidad, valorModular, total, resultadosMensura);
-    sumaTotal += total;
+    agregarFila(
+      titulo,
+      cantidad,
+      valoresMensura[index].valor || valoresMensura[index].porcentaje,
+      totalMensura,
+      resultadosMensura
+    );
+    sumaTotal += totalMensura;
   });
 
-  const contenedor = document.getElementById(`abonar${clase}`);
-  contenedor.textContent = formatoPesoArgentino(sumaTotal);
+  const totalidad = document.getElementById(`abonar${clase}`);
+  totalidad.textContent = formatoPesoArgentino(sumaTotal);
+
+  valoresMensura.splice(0, 2);
 }
