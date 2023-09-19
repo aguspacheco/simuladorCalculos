@@ -8,6 +8,7 @@ import {
   agregarFila,
   formatoPesoArgentino,
   calcularTotal,
+  agregarFilaPreferencial,
 } from "./funcionesGlobales.js";
 
 function getModuloUbicado(parcelas) {
@@ -40,13 +41,24 @@ export function crearTablaMensura(clase, entrada) {
       valoresMensura
     );
 
-    agregarFila(
-      titulo,
-      cantidad,
-      valoresMensura[index].valor || valoresMensura[index].porcentaje,
-      totalMensura,
-      resultadosMensura
-    );
+    if (valoresMensura[index].porcentaje) {
+      agregarFilaPreferencial(
+        titulo,
+        entrada[index],
+        valoresMensura[index].porcentaje,
+        totalMensura,
+        resultadosMensura
+      );
+    } else {
+      agregarFila(
+        titulo,
+        cantidad,
+        valoresMensura[index].valor,
+        totalMensura,
+        resultadosMensura
+      );
+    }
+
     sumaTotal += totalMensura;
   });
 

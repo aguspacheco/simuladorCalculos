@@ -41,12 +41,18 @@ export function agregarFila(etiqueta, cantidad, valorModular, total, tabla) {
  * @param {number} monto - El monto para el elemento.
  * @param {HTMLElement} tabla - La tabla donde se agregará la fila.
  */
-export function agregarFilaPreferencial(etiqueta, preferencial, monto, tabla) {
+export function agregarFilaPreferencial(
+  etiqueta,
+  preferencial,
+  porcentaje,
+  monto,
+  tabla
+) {
   const fila = document.createElement("tr");
   fila.innerHTML = `
     <th class="texto-izquierda">${etiqueta}</th>
     <td>${preferencial ? "Si✔" : "No"}</td> 
-    <td>${preferencial ? porcentajePreferencial : 0}%</td>
+    <td>${preferencial ? porcentaje : 0}%</td>
     <td>${formatoPesoArgentino(monto)}</td>
   `;
   tabla.appendChild(fila);
@@ -88,6 +94,11 @@ export function calcularTotal(index, cantidad, suma, valores) {
   return total;
 }
 
+const funcionesTabla = {
+  Mensura: crearTablaMensura,
+  Valuaciones: crearTablaValuaciones,
+};
+
 /**
  * Muestra los resultados totales en la tabla.
  * @param {string} clase - La clase para la cual se calcula y se muestran los resultados.
@@ -103,9 +114,9 @@ export function mostrarTotal(clase) {
     datosEntrada.push(valores);
   }
 
-  if (clase === "Mensura") {
-    crearTablaMensura(clase, datosEntrada);
-  } else {
-    crearTablaValuaciones(clase, datosEntrada);
+  const armarTabla = funcionesTabla[clase];
+
+  if (armarTabla) {
+    armarTabla(clase, datosEntrada);
   }
 }

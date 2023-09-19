@@ -2,11 +2,13 @@ import {
   resultadosValuaciones,
   valoresValuaciones,
   titulosValuaciones as titulo,
+  valoresMensura,
 } from "./constantes.js";
 import {
   agregarFila,
   formatoPesoArgentino,
   calcularTotal,
+  agregarFilaPreferencial,
 } from "./funcionesGlobales.js";
 
 export function crearTablaValuaciones(clase, entrada) {
@@ -23,6 +25,25 @@ export function crearTablaValuaciones(clase, entrada) {
       suma,
       valoresValuaciones
     );
+
+    if (valoresMensura[index].porcentaje) {
+      agregarFilaPreferencial(
+        titulo,
+        entrada[index],
+        valoresMensura[index].porcentaje,
+        totalValuaciones,
+        resultadosValuaciones
+      );
+    } else {
+      agregarFila(
+        titulo,
+        cantidad,
+        valoresMensura[index].valor,
+        totalValuaciones,
+        resultadosValuaciones
+      );
+    }
+
     agregarFila(
       titulo,
       cantidad,
