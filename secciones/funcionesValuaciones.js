@@ -2,7 +2,6 @@ import {
   resultadosValuaciones,
   valoresValuaciones,
   titulosValuaciones as titulo,
-  valoresMensura,
 } from "./constantes.js";
 import {
   agregarFila,
@@ -26,11 +25,11 @@ export function crearTablaValuaciones(clase, entrada) {
       valoresValuaciones
     );
 
-    if (valoresMensura[index].porcentaje) {
+    if (valoresValuaciones[index].porcentaje) {
       agregarFilaPreferencial(
         titulo,
         entrada[index],
-        valoresMensura[index].porcentaje,
+        valoresValuaciones[index].porcentaje,
         totalValuaciones,
         resultadosValuaciones
       );
@@ -38,19 +37,12 @@ export function crearTablaValuaciones(clase, entrada) {
       agregarFila(
         titulo,
         cantidad,
-        valoresMensura[index].valor,
+        valoresValuaciones[index].valor,
         totalValuaciones,
         resultadosValuaciones
       );
     }
 
-    agregarFila(
-      titulo,
-      cantidad,
-      valoresValuaciones[index].valor || valoresValuaciones[index].porcentaje,
-      totalValuaciones,
-      resultadosValuaciones
-    );
     suma += totalValuaciones;
   });
 

@@ -1,12 +1,7 @@
-import { porcentajePreferencial } from "./constantes.js";
 import { crearTablaMensura } from "./funcionesMensura.js";
 import { crearTablaValuaciones } from "./funcionesValuaciones.js";
 
-/**
- * Cambia el valor de el total al formato de moneda en pesos argentinos.
- * @param {Number} monto - El monto a cambiar de formato.
- * @returns {String} - El monto cambiado como cadena con el formato de peso argentino.
- */
+// Cambia el valor de el total al formato de moneda en pesos argentinos.
 export function formatoPesoArgentino(monto) {
   return new Intl.NumberFormat("es-AR", {
     style: "currency",
@@ -15,14 +10,7 @@ export function formatoPesoArgentino(monto) {
   }).format(monto);
 }
 
-/**
- * Agrega una fila a la tabla de resultados con la información de datos ingresados, cantidad, valor modular y valor total.
- * @param {string} etiqueta - La etiqueta de la fila.
- * @param {number} cantidad - La cantidad que se ingresó en el formulario.
- * @param {number} valorModular - El valor modular de cada elemento que hay en la fila.
- * @param {number} total - El valor total calculado para la fila.
- * @param {HTMLElement} tabla - La tabla donde se agregará la fila.
- */
+// Agrega una fila a la tabla de resultados
 export function agregarFila(etiqueta, cantidad, valorModular, total, tabla) {
   const fila = document.createElement("tr");
   fila.innerHTML = `
@@ -34,13 +22,7 @@ export function agregarFila(etiqueta, cantidad, valorModular, total, tabla) {
   tabla.appendChild(fila);
 }
 
-/**
- * Agrega una fila a la tabla de resultados con la información de datos ingresados, cantidad, valor modular y valor total, para elementos preferenciales.
- * @param {string} etiqueta - La etiqueta de la fila.
- * @param {boolean} preferencial - Indica si el elemento es preferencial o no.
- * @param {number} monto - El monto para el elemento.
- * @param {HTMLElement} tabla - La tabla donde se agregará la fila.
- */
+// Agrega una fila a la tabla de resultados para elementos preferenciales
 export function agregarFilaPreferencial(
   etiqueta,
   preferencial,
@@ -58,28 +40,35 @@ export function agregarFilaPreferencial(
   tabla.appendChild(fila);
 }
 
-/**
- * Abre la ventana emergente de la tabla según el tipo de formulario indicado.
- * @param {string} tipo - El tipo de ventana que se abre.
- */
+// Abre la ventana emergente de la tabla
 export function abrirPopUp(tipo) {
   const ventanaEmergente = document.getElementById(`popUp${tipo}`);
   ventanaEmergente.style.display = "block";
 }
 
-/**
- * Cierra la ventana emergente y muestra nuevamente el formulario.
- * @param {string} tipo - El tipo de ventana que se cierra.
- */
+// Cierra la ventana emergente y muestra nuevamente el formulario
 export function cerrarPopUp(tipo) {
   const ventana = document.getElementById(`popUp${tipo}`);
   ventana.style.display = "none";
+  const formulario = document.getElementById(`formulario${tipo}`);
+  const inputs = formulario.getElementsByTagName("input");
+
+  for (let i = 0; i < inputs.length; i++) {
+    const input = inputs[i];
+    if (input.type === "checkbox") {
+      input.checked = false;
+    } else {
+      input.value = "";
+    }
+  }
+
   resultadosMensura.innerHTML = "";
   resultadosValuaciones.innerHTML = "";
   calculosMensura.style.display = "block";
   calculosValuaciones.style.display = "block";
 }
 
+// Calcula el total
 export function calcularTotal(index, cantidad, suma, valores) {
   let total = 0;
 
@@ -94,15 +83,13 @@ export function calcularTotal(index, cantidad, suma, valores) {
   return total;
 }
 
+// Funciones para crear las tablas
 const funcionesTabla = {
   Mensura: crearTablaMensura,
   Valuaciones: crearTablaValuaciones,
 };
 
-/**
- * Muestra los resultados totales en la tabla.
- * @param {string} clase - La clase para la cual se calcula y se muestran los resultados.
- */
+// Muestra los resultados totales en la tabla
 export function mostrarTotal(clase) {
   const formulario = document.getElementById(`formulario${clase}`);
   const inputs = formulario.getElementsByTagName("input");
