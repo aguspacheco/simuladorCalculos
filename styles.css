@@ -14,7 +14,7 @@ body {
 }
 
 caption {
-  background: linear-gradient(to bottom, #f3f3f3, #b3d1c8);
+  background: linear-gradient(to bottom, #98eeff, #63c9dd);
   font-family: cursive;
 }
 
@@ -34,7 +34,7 @@ caption {
   width: 100%;
   background: none;
   border: none;
-  border-bottom: 1px solid #95a6a7;
+  border-bottom: 1px solid #1193ad;
   outline: none;
 }
 
@@ -45,7 +45,7 @@ input[type="checkbox"] {
 }
 
 fieldset {
-  border: 3px solid #95a6a7;
+  border: 3px solid #1193ad;
   border-radius: 15px;
   width: 50%;
   padding: 5%;
@@ -54,19 +54,18 @@ fieldset {
 }
 
 legend {
-  border: 1px solid #95a6a7;
+  border: 1px solid #1193ad;
   text-align: center;
-  background-color: #95a6a7;
+  background-color: #1193ad;
   border-radius: 8px;
   color: white;
 }
 
 ::selection {
-  background-color: #b3d1c8;
+  background-color: #1193ad;
 }
 
 table {
-  background-color: white;
   border-collapse: collapse;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   box-shadow: 0 0 20px 1px #0000004d;
@@ -74,7 +73,7 @@ table {
 }
 
 thead {
-  background-color: #b3d1c8;
+  background-color: #98eeff;
   border-bottom: solid 4px;
   color: #2b3d4f;
   text-align: center;
@@ -85,7 +84,7 @@ tr:nth-child(even) {
 }
 
 tr:hover {
-  background-color: #b3d1c8;
+  background-color: #63c9dd;
 }
 
 td {
