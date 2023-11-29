@@ -89,11 +89,32 @@ const funcionesTabla = {
   Valuaciones: crearTablaValuaciones,
 };
 
+// Función para verificar si al menos un campo tiene valor
+function hayValorIngresado() {
+  const campos = document.querySelectorAll('input[type="number"]');
+  for (let i = 0; i < campos.length; i++) {
+    if (campos[i].value.trim() !== '') {
+      return true; // Se encontró al menos un campo con valor
+    }
+  }
+  return false; // Ningún campo tiene valor
+}
+
 // Muestra los resultados totales en la tabla
+// Modifica la función mostrarTotal para incluir la verificación y alerta
+// Modifica la función mostrarTotal para incluir la verificación y alerta
 export function mostrarTotal(clase) {
   const formulario = document.getElementById(`formulario${clase}`);
   const inputs = formulario.getElementsByTagName("input");
   const datosEntrada = [];
+
+  // Verificar si al menos un campo tiene valor
+  if (!hayValorIngresado()) {
+    alert('Debe ingresar al menos un valor antes de calcular el total.');
+    // Ocultar la ventana emergente
+    cerrarPopUp(clase);
+    return;
+  }
 
   for (let i = 0; i < inputs.length; i++) {
     const input = inputs[i];
@@ -106,4 +127,31 @@ export function mostrarTotal(clase) {
   if (armarTabla) {
     armarTabla(clase, datosEntrada);
   }
+}
+
+
+
+
+// Función para validar si un valor es positivo
+function esPositivo(value) {
+
+}
+
+// Obtener referencia a los campos de entrada de tipo "number"
+const camposNumero = document.querySelectorAll('input[type="number"]');
+
+// Recorrer todos los campos de número
+for (let i = 0; i < camposNumero.length; i++) {
+  // Añadir un evento de entrada (input)
+  camposNumero[i].addEventListener('input', function() {
+    // Obtener el valor del campo de número
+    const valor = this.value;
+
+    // Validar si el valor es positivo
+    if (valor < 0) {
+      alert('Solo se aceptan números positivos, por favor ingrese otro valor');
+      // Limpiar el campo de número
+      this.value = '';
+    }
+  });
 }
